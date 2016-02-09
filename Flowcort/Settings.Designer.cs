@@ -32,6 +32,7 @@
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.buttonBar1 = new ButtonBar.ButtonBar();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,17 +72,27 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // buttonBar1
+            // 
+            this.buttonBar1.Location = new System.Drawing.Point(2, 230);
+            this.buttonBar1.Name = "buttonBar1";
+            this.buttonBar1.Size = new System.Drawing.Size(600, 40);
+            this.buttonBar1.TabIndex = 4;
+            this.buttonBar1.ButtonPush += new System.EventHandler(this.buttonBar1_ButtonPush);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 98);
+            this.ClientSize = new System.Drawing.Size(754, 271);
+            this.Controls.Add(this.buttonBar1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.label1);
             this.Name = "Settings";
             this.Text = "Settings";
+            this.Load += new System.EventHandler(this.Settings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -94,5 +105,6 @@
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private ButtonBar.ButtonBar buttonBar1;
     }
 }

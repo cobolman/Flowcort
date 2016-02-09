@@ -11,7 +11,6 @@ namespace Flowcort
 {
     class FSXConnect
     {
-        // User-defined win32 event
         const int WM_USER_SIMCONNECT = 0x0402;
 
         enum EVENTS
@@ -51,7 +50,9 @@ namespace Flowcort
         };
 
         // Class Variables
-        SimConnect simconnect = null;
+        public SimConnect simconnect = null;
+        public Timer timer1 = new Timer();
+
         private Form owner { get; set; }
         private String title { get; set; }
         private int altitude { get; set; }
@@ -160,6 +161,8 @@ namespace Flowcort
             altitude = 0;
             latitude = 0.0;
             longitude = 0.0;
+
+            timer1.Tick += timer1_Tick;
         }
 
         public void openConnection()
@@ -308,6 +311,26 @@ namespace Flowcort
             }
         }
 
+        public void pollFSXData(int pollInterval = 1000)
+        {
+            // interval enabled
+            timer1.Interval = pollInterval;
+            timer1.Enabled = true;
+        }
+
+        public void stopPolling()
+        {
+            timer1.Enabled = false;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (simconnect != null)
+            {
+                simconnect.RequestDataOnSimObjectType(DATA_REQUESTS.REQUEST_1, DEFINITIONS.Struct1, 0, SIMCONNECT_SIMOBJECT_TYPE.USER);
+            }
+        }
+
         void simconnect_OnRecvOpen(SimConnect sender, SIMCONNECT_RECV_OPEN data)
         {
             OnConnectionOpen(EventArgs.Empty);
@@ -330,7 +353,8 @@ namespace Flowcort
             FSXActionEventArgs args = new FSXActionEventArgs();
             args.Action = recEvent.uEventID;
             OnFSXAction(args);
-        } 
+        }
 
     }
+
 }

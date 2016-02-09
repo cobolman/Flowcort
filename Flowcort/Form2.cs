@@ -6,8 +6,6 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using Microsoft.FlightSimulator.SimConnect;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,7 +22,7 @@ namespace Flowcort
         const int WM_USER_SIMCONNECT = 0x0402;
 
         // SimConnect object
-        SimConnect simconnect = null;
+        FSXConnect fsxConnection = null;
 
         enum EVENTS
         {
@@ -34,47 +32,36 @@ namespace Flowcort
             KEY_PRESSURIZATION_PRESSURE_DUMP_SWITCH,
         };
 
-        enum NOTIFICATION_GROUPS
-        {
-            GROUP0,
-        }
-
-        enum DEFINITIONS
-        {
-            Struct1,
-        }
-
         enum DATA_REQUESTS
         { 
             REQUEST_1,
         }
 
-        // this is how you declare a data structure so that 
-        // simconnect knows how to fill it/read it. 
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
-        struct Struct1
-        {
-            // this is how you declare a fixed size string 
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-            public String title;
-            public double latitude;
-            public double longitude;
-            public double altitude;
-        }; 
-
         public Form2()
         {
             InitializeComponent();
+            this.itemDataGridView1.MouseWheel += new MouseEventHandler(mousewheel);
         }
 
-        //TODO Set this to point at the FSXConnect object I'll be creating
+        private void mousewheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta > 0 && itemDataGridView1.FirstDisplayedScrollingRowIndex > 0)
+            {
+                itemDataGridView1.FirstDisplayedScrollingRowIndex--;
+            }
+            else if (e.Delta < 0)
+            {
+                itemDataGridView1.FirstDisplayedScrollingRowIndex++;
+            }
+        }
+
         protected override void DefWndProc(ref Message m)
         {
             if (m.Msg == WM_USER_SIMCONNECT)
             {
-                if (simconnect != null)
+                if ( fsxConnection != null && fsxConnection.simconnect != null)
                 {
-                    simconnect.ReceiveMessage();
+                    fsxConnection.simconnect.ReceiveMessage();
                 }
             }
             else
@@ -83,149 +70,15 @@ namespace Flowcort
             }
         }
 
-        //TODO Re-work this to use my FXSConnect object
         private void closeConnection()
         {
-            if (simconnect != null)
+            if (fsxConnection != null)
             {
-                // Dispose serves the same purpose as SimConnect_Close() 
-                simconnect.Dispose();
-                simconnect = null;
+                fsxConnection.closeConnection();
+                fsxConnection = null;
                 btnConnectToggle.Image = Flowcort.Properties.Resources.Disconnected32;
             }
         } 
-
-        private void initClientEvent()
-        {
-            try
-            {
-                // listen to connect and quit msgs 
-                simconnect.OnRecvOpen += new SimConnect.RecvOpenEventHandler(simconnect_OnRecvOpen);
-                simconnect.OnRecvQuit += new SimConnect.RecvQuitEventHandler(simconnect_OnRecvQuit);
-
-                // listen to exceptions 
-                simconnect.OnRecvException += new SimConnect.RecvExceptionEventHandler(simconnect_OnRecvException);
-
-                // listen to events 
-                simconnect.OnRecvEvent += new SimConnect.RecvEventEventHandler(simconnect_OnRecvEvent);
-
-                // subscribe to Flowcort Prior Item, Next Item and Done/Undone Toggle events 
-                simconnect.MapClientEventToSimEvent(EVENTS.KEY_PRESSURIZATION_PRESSURE_ALT_INC, "PRESSURIZATION_PRESSURE_ALT_INC");
-                simconnect.AddClientEventToNotificationGroup(NOTIFICATION_GROUPS.GROUP0, EVENTS.KEY_PRESSURIZATION_PRESSURE_ALT_INC, false);
-
-                simconnect.MapClientEventToSimEvent(EVENTS.KEY_PRESSURIZATION_PRESSURE_ALT_DEC, "PRESSURIZATION_PRESSURE_ALT_DEC");
-                simconnect.AddClientEventToNotificationGroup(NOTIFICATION_GROUPS.GROUP0, EVENTS.KEY_PRESSURIZATION_PRESSURE_ALT_DEC, false);
-
-                simconnect.MapClientEventToSimEvent(EVENTS.KEY_PRESSURIZATION_PRESSURE_DUMP_SWITCH, "PRESSURIZATION_PRESSURE_DUMP_SWITCH");
-                simconnect.AddClientEventToNotificationGroup(NOTIFICATION_GROUPS.GROUP0, EVENTS.KEY_PRESSURIZATION_PRESSURE_DUMP_SWITCH, false);
-
-                simconnect.MapClientEventToSimEvent(EVENTS.KEY_TOGGLE_PROPELLER_DEICE, "TOGGLE_PROPELLER_DEICE");
-                simconnect.AddClientEventToNotificationGroup(NOTIFICATION_GROUPS.GROUP0, EVENTS.KEY_TOGGLE_PROPELLER_DEICE, false);            
-
-                // set the group priority 
-                simconnect.SetNotificationGroupPriority(NOTIFICATION_GROUPS.GROUP0, SimConnect.SIMCONNECT_GROUP_PRIORITY_HIGHEST);
-
-                // define a data structure 
-                simconnect.AddToDataDefinition(DEFINITIONS.Struct1, "Title", null, SIMCONNECT_DATATYPE.STRING256, 0.0f, SimConnect.SIMCONNECT_UNUSED);
-                simconnect.AddToDataDefinition(DEFINITIONS.Struct1, "Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
-                simconnect.AddToDataDefinition(DEFINITIONS.Struct1, "Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
-                simconnect.AddToDataDefinition(DEFINITIONS.Struct1, "Plane Altitude", "feet", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
-
-                // IMPORTANT: register it with the simconnect managed wrapper marshaller 
-                // if you skip this step, you will only receive a uint in the .dwData field. 
-                simconnect.RegisterDataDefineStruct<Struct1>(DEFINITIONS.Struct1);
-
-                // catch a simobject data request 
-                simconnect.OnRecvSimobjectDataBytype += new SimConnect.RecvSimobjectDataBytypeEventHandler(simconnect_OnRecvSimobjectDataBytype);
-
-            }
-            catch (COMException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        void simconnect_OnRecvSimobjectDataBytype(SimConnect sender, SIMCONNECT_RECV_SIMOBJECT_DATA_BYTYPE data)
-        {
-
-            switch ((DATA_REQUESTS)data.dwRequestID)
-            {
-                case DATA_REQUESTS.REQUEST_1:
-                    Struct1 s1 = (Struct1)data.dwData[0];
-                    txtbxRemarks.Text = "";
-
-                    txtbxRemarks.Text += "\r\nTitle: " + s1.title;
-                    txtbxRemarks.Text += "\r\nLat:   " + s1.latitude;
-                    txtbxRemarks.Text += "\r\nLon:   " + s1.longitude;
-                    txtbxRemarks.Text += "\r\nAlt:   " + s1.altitude;
-                    break;
-
-                default:
-                    txtbxRemarks.Text += "Unknown request ID: " + data.dwRequestID;
-                    break;
-            }
-        } 
-
-        void simconnect_OnRecvOpen(SimConnect sender, SIMCONNECT_RECV_OPEN data)
-        {
-            // MessageBox.Show("Connected to your Flight Sim");
-        }
-
-        // The case where the user closes Prepar3D 
-        void simconnect_OnRecvQuit(SimConnect sender, SIMCONNECT_RECV data)
-        {
-            btnConnectToggle.Image = Flowcort.Properties.Resources.Disconnected32;
-            closeConnection();
-        }
-
-        void simconnect_OnRecvException(SimConnect sender, SIMCONNECT_RECV_EXCEPTION data)
-        {
-            MessageBox.Show("Exception received: " + data.dwException);
-        }
-
-        void simconnect_OnRecvEvent(SimConnect sender, SIMCONNECT_RECV_EVENT recEvent)
-        {
-            switch (recEvent.uEventID)
-            {
-            //KEY_PRESSURIZATION_PRESSURE_ALT_INC,
-            //KEY_PRESSURIZATION_PRESSURE_ALT_DEC,
-            //KEY_PRESSURIZATION_PRESSURE_DUMP_SWITCH,
-
-                case (uint)EVENTS.KEY_TOGGLE_PROPELLER_DEICE:
-
-                    lblFSEvents.Text = "Hide";
-                    ShowHideFlowcort();
-                    break;
-
-                case (uint)EVENTS.KEY_PRESSURIZATION_PRESSURE_ALT_INC:
-
-                    lblFSEvents.Text = "Next Item";
-                    nextActionItem(true);
-                    break;
-
-                case (uint)EVENTS.KEY_PRESSURIZATION_PRESSURE_ALT_DEC:
-
-                    lblFSEvents.Text = "Prior Item";
-                    nextActionItem(false);
-                    break;
-
-                case (uint)EVENTS.KEY_PRESSURIZATION_PRESSURE_DUMP_SWITCH:
-
-                    lblFSEvents.Text = "Done/Undone Toggle";
-                    toggleDoneUndone();
-                    nextActionItem(true);
-                    break;
-
-            }
-        } 
-
-        private void sectionBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.sectionBindingSource1.EndEdit();
-            this.tableAdapterManager1.UpdateAll(this.fSXSE_A321_TutorialDataSet);
-
-        }
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -508,23 +361,16 @@ namespace Flowcort
 
         }
 
-        //TODO Rework this method to use the FSXConnect object
         private void btnConnectToggle_Click(object sender, EventArgs e)
         {
-            if (simconnect == null)
+            if (fsxConnection == null)
             {
-                try
-                {
-                    // the constructor is similar to SimConnect_Open in the native API 
-                    simconnect = new SimConnect("Managed Client Events", this.Handle, WM_USER_SIMCONNECT, null, 0);
-                    btnConnectToggle.Image = Flowcort.Properties.Resources.Connected32;
-                    initClientEvent();
+                fsxConnection = new FSXConnect(this);
+                fsxConnection.openConnection();
+                fsxConnection.ConnectionOpenEventHandler += new EventHandler(fsxConnectionOpened);
 
-                }
-                catch (COMException ex)
-                {
-                    MessageBox.Show("Unable to connect to your Flight Simulator " + ex.Message);
-                }
+                fsxConnection.FSXActionEventHandler += new EventHandler<FSXConnect.FSXActionEventArgs>(fsxAction);
+                fsxConnection.AltitudeChangedEventHandler += new EventHandler<FSXConnect.AltitudeChangedEventArgs>(fsxAltitudeChanged);
             }
             else
             {
@@ -532,19 +378,60 @@ namespace Flowcort
             }
         }
 
+        private void fsxAltitudeChanged(object sender, FSXConnect.AltitudeChangedEventArgs e)
+        {
+            txtbxRemarks.Text = e.altitude.ToString();
+        }
+
+        private void fsxAction(object sender, FSXConnect.FSXActionEventArgs e)
+        {
+            switch (e.Action)
+            {
+                //KEY_PRESSURIZATION_PRESSURE_ALT_INC,
+                //KEY_PRESSURIZATION_PRESSURE_ALT_DEC,
+                //KEY_PRESSURIZATION_PRESSURE_DUMP_SWITCH,
+
+                case (uint)EVENTS.KEY_TOGGLE_PROPELLER_DEICE:
+
+                    lblFSEvents.Text = "Hide";
+                    ShowHideFlowcort();
+                    break;
+
+                case (uint)EVENTS.KEY_PRESSURIZATION_PRESSURE_ALT_INC:
+
+                    lblFSEvents.Text = "Next Item";
+                    nextActionItem(true);
+                    break;
+
+                case (uint)EVENTS.KEY_PRESSURIZATION_PRESSURE_ALT_DEC:
+
+                    lblFSEvents.Text = "Prior Item";
+                    nextActionItem(false);
+                    break;
+
+                case (uint)EVENTS.KEY_PRESSURIZATION_PRESSURE_DUMP_SWITCH:
+
+                    lblFSEvents.Text = "Done/Undone Toggle";
+                    toggleDoneUndone();
+                    break;
+
+            }
+        }
+
+        private void fsxConnectionOpened(Object sender, EventArgs e)
+        {
+            btnConnectToggle.Image = Flowcort.Properties.Resources.Connected32;
+        }
+
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             closeConnection();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnAltitude_Click(object sender, EventArgs e)
         {
-            timer1.Enabled = !(timer1.Enabled);
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            simconnect.RequestDataOnSimObjectType(DATA_REQUESTS.REQUEST_1, DEFINITIONS.Struct1, 0, SIMCONNECT_SIMOBJECT_TYPE.USER);
+            if ( fsxConnection != null )
+                fsxConnection.pollFSXData();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -656,7 +543,7 @@ namespace Flowcort
                 pictureBox2.Location = new Point(188, 199);
                 numericUpDown1.Location = new Point(360, 8);
 
-                button3.Location = new Point(58, 276);
+                btnAltitude.Location = new Point(58, 276);
                 portrait = true;
             }
             catch (Exception ex)
@@ -679,7 +566,7 @@ namespace Flowcort
                 pictureBox2.Location = new Point(388, 199);
                 numericUpDown1.Location = new Point(567, 3);
 
-                button3.Location = new Point(259, 199);
+                btnAltitude.Location = new Point(259, 199);
                 portrait = false;
             }
             catch (Exception ex)
