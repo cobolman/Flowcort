@@ -109,22 +109,6 @@ namespace Flowcort
             }
         }
 
-        private void hUDToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (hUDToolStripMenuItem.Checked)
-            {
-                int y = Screen.GetWorkingArea(this).Height - 132;
-                this.Location = new Point(0, y);
-
-                this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-                this.Width = Screen.GetWorkingArea(this).Width;
-            }
-            else
-            {
-                this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
-            }
-        }
-
         private void Form2_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyValue)
@@ -303,8 +287,6 @@ namespace Flowcort
 
         private void dataEntryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FastDataEntry frmFDE = new FastDataEntry();
-            frmFDE.Show();
 
         }
 
