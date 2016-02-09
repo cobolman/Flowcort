@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -85,15 +86,18 @@ namespace Flowcort
             this.sectionTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Section);
             this.itemTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Item);
 
+            // Populate button bar with section names
+            using (DataTableReader dtrdr = fSXSE_A321_TutorialDataSet.Section.CreateDataReader())
+            {
+                while (dtrdr.Read())
+                {
+                    buttonBar1.Add(dtrdr.GetString(2));
+                }
+            }
+
             itemDataGridView1.ScrollBars = ScrollBars.None;
             lblFSEvents.Text = "";
             this.TopMost = true;
-
-            if (this.FormBorderStyle != System.Windows.Forms.FormBorderStyle.None)
-            {
-                // btnSettings.Visible = false;
-                // btnExit.Visible = false;
-            }
 
             if (ConfigurationManager.AppSettings["Col0"] != null)
             {
