@@ -36,16 +36,8 @@
             this.dataEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlGrid = new System.Windows.Forms.Panel();
+            this.buttonBar1 = new ButtonBar.ButtonBar();
             this.btnResetSection = new System.Windows.Forms.Button();
-            this.pnlSectionButtons = new System.Windows.Forms.Panel();
-            this.btnSection0 = new System.Windows.Forms.Button();
-            this.btnSection7 = new System.Windows.Forms.Button();
-            this.btnSection1 = new System.Windows.Forms.Button();
-            this.btnSection6 = new System.Windows.Forms.Button();
-            this.btnSection2 = new System.Windows.Forms.Button();
-            this.btnSection5 = new System.Windows.Forms.Button();
-            this.btnSection3 = new System.Windows.Forms.Button();
-            this.btnSection4 = new System.Windows.Forms.Button();
             this.itemDataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,7 +77,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.pnlGrid.SuspendLayout();
-            this.pnlSectionButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sectionBindingSource1)).BeginInit();
@@ -131,13 +122,21 @@
             // 
             // pnlGrid
             // 
+            this.pnlGrid.Controls.Add(this.buttonBar1);
             this.pnlGrid.Controls.Add(this.btnResetSection);
-            this.pnlGrid.Controls.Add(this.pnlSectionButtons);
             this.pnlGrid.Controls.Add(this.itemDataGridView1);
             this.pnlGrid.Location = new System.Drawing.Point(3, 3);
             this.pnlGrid.Name = "pnlGrid";
             this.pnlGrid.Size = new System.Drawing.Size(600, 316);
             this.pnlGrid.TabIndex = 17;
+            // 
+            // buttonBar1
+            // 
+            this.buttonBar1.Location = new System.Drawing.Point(0, -1);
+            this.buttonBar1.Name = "buttonBar1";
+            this.buttonBar1.Size = new System.Drawing.Size(600, 38);
+            this.buttonBar1.TabIndex = 11;
+            this.buttonBar1.ButtonPush += new System.EventHandler(this.btnSection);
             // 
             // btnResetSection
             // 
@@ -148,125 +147,6 @@
             this.btnResetSection.Text = "Reset Section";
             this.btnResetSection.UseVisualStyleBackColor = true;
             this.btnResetSection.Click += new System.EventHandler(this.btnResetSection_Click);
-            // 
-            // pnlSectionButtons
-            // 
-            this.pnlSectionButtons.Controls.Add(this.btnSection0);
-            this.pnlSectionButtons.Controls.Add(this.btnSection7);
-            this.pnlSectionButtons.Controls.Add(this.btnSection1);
-            this.pnlSectionButtons.Controls.Add(this.btnSection6);
-            this.pnlSectionButtons.Controls.Add(this.btnSection2);
-            this.pnlSectionButtons.Controls.Add(this.btnSection5);
-            this.pnlSectionButtons.Controls.Add(this.btnSection3);
-            this.pnlSectionButtons.Controls.Add(this.btnSection4);
-            this.pnlSectionButtons.Location = new System.Drawing.Point(0, 0);
-            this.pnlSectionButtons.Name = "pnlSectionButtons";
-            this.pnlSectionButtons.Size = new System.Drawing.Size(600, 43);
-            this.pnlSectionButtons.TabIndex = 9;
-            // 
-            // btnSection0
-            // 
-            this.btnSection0.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnSection0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSection0.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnSection0.Location = new System.Drawing.Point(3, 3);
-            this.btnSection0.Name = "btnSection0";
-            this.btnSection0.Size = new System.Drawing.Size(75, 37);
-            this.btnSection0.TabIndex = 1;
-            this.btnSection0.Text = "SIM PREP";
-            this.btnSection0.UseVisualStyleBackColor = false;
-            this.btnSection0.Click += new System.EventHandler(this.btnSection);
-            // 
-            // btnSection7
-            // 
-            this.btnSection7.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSection7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSection7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSection7.Location = new System.Drawing.Point(521, 3);
-            this.btnSection7.Name = "btnSection7";
-            this.btnSection7.Size = new System.Drawing.Size(75, 37);
-            this.btnSection7.TabIndex = 8;
-            this.btnSection7.Text = "LANDING";
-            this.btnSection7.UseVisualStyleBackColor = false;
-            this.btnSection7.Click += new System.EventHandler(this.btnSection);
-            // 
-            // btnSection1
-            // 
-            this.btnSection1.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSection1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSection1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSection1.Location = new System.Drawing.Point(77, 3);
-            this.btnSection1.Name = "btnSection1";
-            this.btnSection1.Size = new System.Drawing.Size(75, 37);
-            this.btnSection1.TabIndex = 2;
-            this.btnSection1.Text = "COCKPIT PREP";
-            this.btnSection1.UseVisualStyleBackColor = false;
-            this.btnSection1.Click += new System.EventHandler(this.btnSection);
-            // 
-            // btnSection6
-            // 
-            this.btnSection6.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSection6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSection6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSection6.Location = new System.Drawing.Point(447, 3);
-            this.btnSection6.Name = "btnSection6";
-            this.btnSection6.Size = new System.Drawing.Size(75, 37);
-            this.btnSection6.TabIndex = 7;
-            this.btnSection6.Text = "APPR";
-            this.btnSection6.UseVisualStyleBackColor = false;
-            this.btnSection6.Click += new System.EventHandler(this.btnSection);
-            // 
-            // btnSection2
-            // 
-            this.btnSection2.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSection2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSection2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSection2.Location = new System.Drawing.Point(151, 3);
-            this.btnSection2.Name = "btnSection2";
-            this.btnSection2.Size = new System.Drawing.Size(75, 37);
-            this.btnSection2.TabIndex = 3;
-            this.btnSection2.Text = "TAXI";
-            this.btnSection2.UseVisualStyleBackColor = false;
-            this.btnSection2.Click += new System.EventHandler(this.btnSection);
-            // 
-            // btnSection5
-            // 
-            this.btnSection5.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSection5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSection5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSection5.Location = new System.Drawing.Point(373, 3);
-            this.btnSection5.Name = "btnSection5";
-            this.btnSection5.Size = new System.Drawing.Size(75, 37);
-            this.btnSection5.TabIndex = 6;
-            this.btnSection5.Text = "DESCENT";
-            this.btnSection5.UseVisualStyleBackColor = false;
-            this.btnSection5.Click += new System.EventHandler(this.btnSection);
-            // 
-            // btnSection3
-            // 
-            this.btnSection3.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSection3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSection3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSection3.Location = new System.Drawing.Point(225, 3);
-            this.btnSection3.Name = "btnSection3";
-            this.btnSection3.Size = new System.Drawing.Size(75, 37);
-            this.btnSection3.TabIndex = 4;
-            this.btnSection3.Text = "TAKEOFF";
-            this.btnSection3.UseVisualStyleBackColor = false;
-            this.btnSection3.Click += new System.EventHandler(this.btnSection);
-            // 
-            // btnSection4
-            // 
-            this.btnSection4.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSection4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSection4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSection4.Location = new System.Drawing.Point(299, 3);
-            this.btnSection4.Name = "btnSection4";
-            this.btnSection4.Size = new System.Drawing.Size(75, 37);
-            this.btnSection4.TabIndex = 5;
-            this.btnSection4.Text = "CRUISE";
-            this.btnSection4.UseVisualStyleBackColor = false;
-            this.btnSection4.Click += new System.EventHandler(this.btnSection);
             // 
             // itemDataGridView1
             // 
@@ -668,7 +548,6 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyUp);
             this.contextMenuStrip1.ResumeLayout(false);
             this.pnlGrid.ResumeLayout(false);
-            this.pnlSectionButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sectionBindingSource1)).EndInit();
@@ -706,14 +585,6 @@
         private System.Windows.Forms.Button btnAltitude;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Button btnSection7;
-        private System.Windows.Forms.Button btnSection6;
-        private System.Windows.Forms.Button btnSection5;
-        private System.Windows.Forms.Button btnSection4;
-        private System.Windows.Forms.Button btnSection3;
-        private System.Windows.Forms.Button btnSection2;
-        private System.Windows.Forms.Button btnSection1;
-        private System.Windows.Forms.Button btnSection0;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblFSEvents;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
@@ -734,7 +605,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private System.Windows.Forms.Panel pnlSectionButtons;
         private System.Windows.Forms.Button btnResetSection;
+        private ButtonBar.ButtonBar buttonBar1;
     }
 }

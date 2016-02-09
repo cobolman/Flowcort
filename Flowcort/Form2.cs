@@ -452,9 +452,9 @@ namespace Flowcort
             Button result = null;
             buttonText = buttonText.ToUpper();
 
-            for (int i = 0; i < pnlSectionButtons.Controls.Count; i++)
+            for (int i = 0; i < buttonBar1.Buttons.Count; i++)
             {
-                Button btn = pnlSectionButtons.Controls[i] as Button;
+                Button btn = buttonBar1.Buttons[i];
 
                 if (btn.Text == buttonText)
                 {
@@ -503,9 +503,9 @@ namespace Flowcort
 
         private void resetSectionButtons()
         {
-            for (int i = 0; i < pnlSectionButtons.Controls.Count; i++)
+            for (int i = 0; i < buttonBar1.Buttons.Count; i++)
             {
-                Button btn = pnlSectionButtons.Controls[i] as Button;
+                Button btn = buttonBar1.Buttons[i];
                 resetButton(btn);
             }
         }
