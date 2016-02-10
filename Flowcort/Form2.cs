@@ -95,6 +95,10 @@ namespace Flowcort
                 }
             }
 
+            // Mark first button as selected
+            if (buttonBar1.Count > 0)
+                setSelectedSectionButton(buttonBar1.GetButton(0));
+
             itemDataGridView1.ScrollBars = ScrollBars.None;
             lblFSEvents.Text = "";
             this.TopMost = true;
@@ -139,7 +143,10 @@ namespace Flowcort
                 if (allItemsAreDone())
                     nextSection();
                 else
+                {
+                    ColorizeRow(dgv);
                     nextActionItem(true);
+                }
             }
         }
 
@@ -291,6 +298,11 @@ namespace Flowcort
         }
 
         private void refreshDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void RefreshData()
         {
             fSXSE_A321_TutorialDataSet.EnforceConstraints = false;
             this.sectionTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Section);
@@ -523,13 +535,13 @@ namespace Flowcort
 
                 pnlDetail.Location = new Point(605, 3);
                 pnlDetail.Size = new Size(400, 316);
-                txtbxRemarks.Size = new Size(179, 200);
+                txtbxRemarks.Size = new Size(179, 243);
 
                 pictureBox1.Location = new Point(188, 73);
                 pictureBox2.Location = new Point(188, 199);
                 numericUpDown1.Location = new Point(360, 8);
 
-                btnAltitude.Location = new Point(58, 276);
+                // btnAltitude.Location = new Point(58, 276);
                 portrait = true;
             }
             catch (Exception ex)
@@ -552,7 +564,7 @@ namespace Flowcort
                 pictureBox2.Location = new Point(388, 199);
                 numericUpDown1.Location = new Point(567, 3);
 
-                btnAltitude.Location = new Point(259, 199);
+                // btnAltitude.Location = new Point(259, 199);
                 portrait = false;
             }
             catch (Exception ex)
@@ -564,7 +576,6 @@ namespace Flowcort
         private void itemDataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             ColorizeRow(itemDataGridView1.CurrentRow);
-
         }
 
         private void ColorizeRow(DataGridViewRow row)
@@ -609,10 +620,14 @@ namespace Flowcort
         private void sectionBindingSource1_PositionChanged(object sender, EventArgs e)
         {
             DataRowView current = (DataRowView)sectionBindingSource1.Current;
-            String newSection = current["Description"].ToString().ToUpper();
 
-            Button sectionButton = findSectionButtonByText(newSection);
-            setSelectedSectionButton(sectionButton);
+            if (current != null)
+            {
+                String newSection = current["Description"].ToString().ToUpper();
+
+                Button sectionButton = findSectionButtonByText(newSection);
+                setSelectedSectionButton(sectionButton);
+            }
         }
 
         private void btnResetSection_Click(object sender, EventArgs e)
@@ -631,8 +646,24 @@ namespace Flowcort
                     dgvr.Cells["Done"].Value = true;
                 }
             }
+
+            txtbxRemarks.Text = "*** CAUTION ***\r\n\r\nThis section has been reset. " +
+                "You may need to configure your sim aircraft to the start state\r\n\r\n" + txtbxRemarks.Text;
         }
 
+        private void btnResetList_Click(object sender, EventArgs e)
+        {
+            using (SQLiteConnection con = new SQLiteConnection("data source=|DataDirectory|\\FSXSE_A321_Tutorial"))
+            {
+                SQLiteCommand sqlcmd = con.CreateCommand();
+                sqlcmd.CommandText = "UPDATE Item SET Done = 0";
+
+                con.Open();
+                int rowsAffected = sqlcmd.ExecuteNonQuery();
+            }
+
+            RefreshData();
+        }
 
     }
 }

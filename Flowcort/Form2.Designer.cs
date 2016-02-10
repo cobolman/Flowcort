@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlGrid = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.buttonBar1 = new ButtonBar.ButtonBar();
-            this.btnResetSection = new System.Windows.Forms.Button();
+            this.btnResetList = new System.Windows.Forms.Button();
             this.itemDataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,7 +66,6 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.txtbxRemarks = new System.Windows.Forms.TextBox();
             this.lblRemarks = new System.Windows.Forms.Label();
-            this.btnAltitude = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -73,6 +74,7 @@
             this.tableAdapterManager1 = new Flowcort.FSXSE_A321_TutorialDataSetTableAdapters.TableAdapterManager();
             this.itemTableAdapter1 = new Flowcort.FSXSE_A321_TutorialDataSetTableAdapters.ItemTableAdapter();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.sqLiteConnection1 = new System.Data.SQLite.SQLiteConnection();
             this.contextMenuStrip1.SuspendLayout();
             this.pnlGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView1)).BeginInit();
@@ -101,13 +103,27 @@
             // 
             // pnlGrid
             // 
+            this.pnlGrid.Controls.Add(this.button2);
             this.pnlGrid.Controls.Add(this.buttonBar1);
-            this.pnlGrid.Controls.Add(this.btnResetSection);
+            this.pnlGrid.Controls.Add(this.btnResetList);
             this.pnlGrid.Controls.Add(this.itemDataGridView1);
             this.pnlGrid.Location = new System.Drawing.Point(0, 0);
             this.pnlGrid.Name = "pnlGrid";
-            this.pnlGrid.Size = new System.Drawing.Size(600, 316);
+            this.pnlGrid.Size = new System.Drawing.Size(600, 319);
             this.pnlGrid.TabIndex = 17;
+            // 
+            // button2
+            // 
+            this.button2.Image = global::Flowcort.Properties.Resources.RestartSection;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(116, 276);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(106, 40);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Restart this Section";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnResetSection_Click);
             // 
             // buttonBar1
             // 
@@ -117,15 +133,18 @@
             this.buttonBar1.TabIndex = 11;
             this.buttonBar1.ButtonPush += new System.EventHandler(this.btnSection);
             // 
-            // btnResetSection
+            // btnResetList
             // 
-            this.btnResetSection.Location = new System.Drawing.Point(4, 276);
-            this.btnResetSection.Name = "btnResetSection";
-            this.btnResetSection.Size = new System.Drawing.Size(75, 36);
-            this.btnResetSection.TabIndex = 10;
-            this.btnResetSection.Text = "Reset Section";
-            this.btnResetSection.UseVisualStyleBackColor = true;
-            this.btnResetSection.Click += new System.EventHandler(this.btnResetSection_Click);
+            this.btnResetList.Image = global::Flowcort.Properties.Resources.StartFromBeginning;
+            this.btnResetList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResetList.Location = new System.Drawing.Point(4, 276);
+            this.btnResetList.Name = "btnResetList";
+            this.btnResetList.Size = new System.Drawing.Size(106, 40);
+            this.btnResetList.TabIndex = 10;
+            this.btnResetList.Text = "Restart from Beginning";
+            this.btnResetList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnResetList.UseVisualStyleBackColor = true;
+            this.btnResetList.Click += new System.EventHandler(this.btnResetList_Click);
             // 
             // itemDataGridView1
             // 
@@ -137,14 +156,14 @@
             this.itemDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.itemDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.itemDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.itemDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn10,
@@ -166,16 +185,16 @@
             this.dataGridViewTextBoxColumn20,
             this.dataGridViewTextBoxColumn21});
             this.itemDataGridView1.DataSource = this.itemBindingSource1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemDataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemDataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.itemDataGridView1.EnableHeadersVisualStyles = false;
-            this.itemDataGridView1.Location = new System.Drawing.Point(4, 46);
+            this.itemDataGridView1.Location = new System.Drawing.Point(2, 46);
             this.itemDataGridView1.MultiSelect = false;
             this.itemDataGridView1.Name = "itemDataGridView1";
             this.itemDataGridView1.ReadOnly = true;
@@ -359,7 +378,6 @@
             this.pnlDetail.Controls.Add(this.numericUpDown1);
             this.pnlDetail.Controls.Add(this.txtbxRemarks);
             this.pnlDetail.Controls.Add(this.lblRemarks);
-            this.pnlDetail.Controls.Add(this.btnAltitude);
             this.pnlDetail.Controls.Add(this.button4);
             this.pnlDetail.Controls.Add(this.pictureBox2);
             this.pnlDetail.Controls.Add(this.pictureBox1);
@@ -422,7 +440,7 @@
             this.txtbxRemarks.Multiline = true;
             this.txtbxRemarks.Name = "txtbxRemarks";
             this.txtbxRemarks.ReadOnly = true;
-            this.txtbxRemarks.Size = new System.Drawing.Size(179, 197);
+            this.txtbxRemarks.Size = new System.Drawing.Size(179, 243);
             this.txtbxRemarks.TabIndex = 22;
             this.txtbxRemarks.Text = "This is test text";
             // 
@@ -435,16 +453,6 @@
             this.lblRemarks.Size = new System.Drawing.Size(60, 13);
             this.lblRemarks.TabIndex = 21;
             this.lblRemarks.Text = "REMARKS";
-            // 
-            // btnAltitude
-            // 
-            this.btnAltitude.Location = new System.Drawing.Point(58, 276);
-            this.btnAltitude.Name = "btnAltitude";
-            this.btnAltitude.Size = new System.Drawing.Size(75, 37);
-            this.btnAltitude.TabIndex = 21;
-            this.btnAltitude.Text = "ALT";
-            this.btnAltitude.UseVisualStyleBackColor = true;
-            this.btnAltitude.Click += new System.EventHandler(this.btnAltitude_Click);
             // 
             // button4
             // 
@@ -508,6 +516,20 @@
             // 
             this.itemTableAdapter1.ClearBeforeFill = true;
             // 
+            // sqLiteConnection1
+            // 
+            this.sqLiteConnection1.BusyTimeout = 0;
+            this.sqLiteConnection1.ConnectionString = "data source=\"C:\\Users\\Derek\\Documents\\Visual Studio 2013\\Projects\\Flowcort\\Flowco" +
+    "rt\\FSXSE_A321_Tutorial\"";
+            this.sqLiteConnection1.DefaultDbType = null;
+            this.sqLiteConnection1.DefaultTimeout = 30;
+            this.sqLiteConnection1.DefaultTypeName = null;
+            this.sqLiteConnection1.Flags = System.Data.SQLite.SQLiteConnectionFlags.None;
+            this.sqLiteConnection1.ParseViaFramework = false;
+            this.sqLiteConnection1.PrepareRetries = 3;
+            this.sqLiteConnection1.ProgressOps = 0;
+            this.sqLiteConnection1.VfsName = null;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -518,6 +540,7 @@
             this.Controls.Add(this.pnlGrid);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Form2";
             this.Text = "Flowcort";
@@ -559,7 +582,6 @@
         private System.Windows.Forms.ToolStripMenuItem refreshDataToolStripMenuItem;
         private System.Windows.Forms.Button btnConnectToggle;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button btnAltitude;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button button1;
@@ -582,7 +604,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private System.Windows.Forms.Button btnResetSection;
+        private System.Windows.Forms.Button btnResetList;
         private ButtonBar.ButtonBar buttonBar1;
+        private System.Windows.Forms.Button button2;
+        private System.Data.SQLite.SQLiteConnection sqLiteConnection1;
     }
 }
