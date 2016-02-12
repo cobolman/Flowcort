@@ -17,7 +17,7 @@ namespace Flowcort
     {
         // Form Variables
 
-        bool portrait = true;
+        bool portrait = false;
 
         // User-defined win32 event
         const int WM_USER_SIMCONNECT = 0x0402;
@@ -38,10 +38,38 @@ namespace Flowcort
             REQUEST_1,
         }
 
+        private int _transparency = 0;
+        private int transparency {
+            get { return _transparency; }
+            set 
+            {
+                _transparency = value;
+                double trx = Convert.ToDouble(_transparency) / 10;
+                this.Opacity = 1.0 - trx;
+
+                pctrbxTransparency.Image = imglstTransparency.Images[_transparency];
+            }
+        }
+
         public Form2()
         {
             InitializeComponent();
             this.itemDataGridView1.MouseWheel += new MouseEventHandler(mousewheel);
+            this.pctrbxTransparency.MouseWheel += new MouseEventHandler(transparencymousewheel);
+        }
+
+        private void transparencymousewheel(object sender, MouseEventArgs e)
+        {
+            if ( e.Delta > 0 )
+            {
+                if (transparency < 7)
+                    transparency += 1;
+            }
+            else if (e.Delta < 0)
+            {
+                if (transparency > 0)
+                    transparency -= 1;
+            }
         }
 
         private void mousewheel(object sender, MouseEventArgs e)
@@ -100,7 +128,6 @@ namespace Flowcort
                 setSelectedSectionButton(buttonBar1.GetButton(0));
 
             itemDataGridView1.ScrollBars = ScrollBars.None;
-            lblFSEvents.Text = "";
             this.TopMost = true;
 
             if (ConfigurationManager.AppSettings["Col0"] != null)
@@ -391,25 +418,21 @@ namespace Flowcort
 
                 case (uint)EVENTS.KEY_TOGGLE_PROPELLER_DEICE:
 
-                    lblFSEvents.Text = "Hide";
                     ShowHideFlowcort();
                     break;
 
                 case (uint)EVENTS.KEY_PRESSURIZATION_PRESSURE_ALT_INC:
 
-                    lblFSEvents.Text = "Next Item";
                     nextActionItem(true);
                     break;
 
                 case (uint)EVENTS.KEY_PRESSURIZATION_PRESSURE_ALT_DEC:
 
-                    lblFSEvents.Text = "Prior Item";
                     nextActionItem(false);
                     break;
 
                 case (uint)EVENTS.KEY_PRESSURIZATION_PRESSURE_DUMP_SWITCH:
 
-                    lblFSEvents.Text = "Done/Undone Toggle";
                     toggleDoneUndone();
                     break;
 
@@ -436,13 +459,6 @@ namespace Flowcort
         {
             Settings settings = new Settings();
             settings.ShowDialog();
-        }
-
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            double transparency = Convert.ToDouble(numericUpDown1.Value) / 10;
-            this.Opacity = 1.0 - transparency;
         }
 
         private Button findSectionButtonByText(String buttonText)
@@ -527,7 +543,7 @@ namespace Flowcort
             }
         }
 
-        private void SetPortraitMode()
+        private void SetLandscapeMode()
         {
             try
             {
@@ -535,14 +551,14 @@ namespace Flowcort
 
                 pnlDetail.Location = new Point(605, 3);
                 pnlDetail.Size = new Size(400, 316);
-                txtbxRemarks.Size = new Size(179, 243);
+                txtbxRemarks.Size = new Size(179, 290);
 
-                pictureBox1.Location = new Point(188, 73);
+                pictureBox1.Location = new Point(188, 22);
                 pictureBox2.Location = new Point(188, 199);
-                numericUpDown1.Location = new Point(360, 8);
+                // numericUpDown1.Location = new Point(360, 8);
 
                 // btnAltitude.Location = new Point(58, 276);
-                portrait = true;
+                portrait = false;
             }
             catch (Exception ex)
             {
@@ -550,22 +566,22 @@ namespace Flowcort
             }
         }
 
-        private void SetLandscapeMode()
+        private void SetPortraitMode()
         {
             try
             {
-                this.Size = new Size(622, 685);
+                this.Size = new Size(618, 640);
 
                 pnlDetail.Location = new Point(3, 325);
                 pnlDetail.Size = new Size(600, 319);
-                txtbxRemarks.Size = new Size(587, 120);
+                txtbxRemarks.Size = new Size(594, 120);
 
-                pictureBox1.Location = new Point(4, 199);
-                pictureBox2.Location = new Point(388, 199);
-                numericUpDown1.Location = new Point(567, 3);
+                pictureBox1.Location = new Point(4, 155);
+                pictureBox2.Location = new Point(384, 155);
+                // numericUpDown1.Location = new Point(567, 3);
 
                 // btnAltitude.Location = new Point(259, 199);
-                portrait = false;
+                portrait = true;
             }
             catch (Exception ex)
             {
@@ -632,23 +648,18 @@ namespace Flowcort
 
         private void btnResetSection_Click(object sender, EventArgs e)
         {
-            if (allItemsAreDone())
+            foreach (DataGridViewRow dgvr in itemDataGridView1.Rows)
             {
-                foreach (DataGridViewRow dgvr in itemDataGridView1.Rows)
-                {
-                    dgvr.Cells["Done"].Value = false;
-                }
-            }
-            else
-            {
-                foreach (DataGridViewRow dgvr in itemDataGridView1.Rows)
-                {
-                    dgvr.Cells["Done"].Value = true;
-                }
+                dgvr.Cells["Done"].Value = false;
             }
 
-            txtbxRemarks.Text = "*** CAUTION ***\r\n\r\nThis section has been reset. " +
-                "You may need to configure your sim aircraft to the start state\r\n\r\n" + txtbxRemarks.Text;
+            if (itemDataGridView1.Rows.Count > 0)
+            {
+                itemDataGridView1.Rows[0].Selected = true;
+                itemDataGridView1.Rows[0].Cells[2].Selected = true;
+            }
+
+            itemDataGridView1.Focus();
         }
 
         private void btnResetList_Click(object sender, EventArgs e)
@@ -663,6 +674,30 @@ namespace Flowcort
             }
 
             RefreshData();
+        }
+
+        private void pctrbxTransparency_MouseDown(object sender, MouseEventArgs e)
+        {
+            if ( e.Button == MouseButtons.Left )
+            {
+                if (transparency > 0)
+                    transparency -= 1;
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                if (transparency < 7)
+                    transparency += 1;
+            }
+        }
+
+        private void pctrbxTransparency_MouseEnter(object sender, EventArgs e)
+        {
+            pctrbxTransparency.Focus();
+        }
+
+        private void pctrbxTransparency_MouseLeave(object sender, EventArgs e)
+        {
+            itemDataGridView1.Focus();
         }
 
     }

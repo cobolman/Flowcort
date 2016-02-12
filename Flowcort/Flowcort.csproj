@@ -235,6 +235,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Oxygen-Icons.org-Oxygen-Actions-mail-mark-task.ico" />
+    <None Include="Resources\rotate01.png" />
+    <None Include="Resources\rotate7.png" />
+    <None Include="Resources\rotate6.png" />
+    <None Include="Resources\rotate5.png" />
+    <None Include="Resources\rotate4.png" />
+    <None Include="Resources\rotate3.png" />
+    <None Include="Resources\rotate2.png" />
+    <None Include="Resources\rotate1.png" />
+    <None Include="Resources\rotate0.png" />
     <None Include="Resources\RestartSection.png" />
     <None Include="Resources\StartFromBeginning.png" />
   </ItemGroup>

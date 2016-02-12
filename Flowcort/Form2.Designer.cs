@@ -29,15 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlGrid = new System.Windows.Forms.Panel();
+            this.pctrbxTransparency = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.buttonBar1 = new ButtonBar.ButtonBar();
             this.btnResetList = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.itemDataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,29 +63,25 @@
             this.itemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sectionBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.fSXSE_A321_TutorialDataSet = new Flowcort.FSXSE_A321_TutorialDataSet();
+            this.btnConnectToggle = new System.Windows.Forms.Button();
             this.pnlDetail = new System.Windows.Forms.Panel();
-            this.lblFSEvents = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.txtbxRemarks = new System.Windows.Forms.TextBox();
             this.lblRemarks = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnConnectToggle = new System.Windows.Forms.Button();
             this.sectionTableAdapter1 = new Flowcort.FSXSE_A321_TutorialDataSetTableAdapters.SectionTableAdapter();
             this.tableAdapterManager1 = new Flowcort.FSXSE_A321_TutorialDataSetTableAdapters.TableAdapterManager();
             this.itemTableAdapter1 = new Flowcort.FSXSE_A321_TutorialDataSetTableAdapters.ItemTableAdapter();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.sqLiteConnection1 = new System.Data.SQLite.SQLiteConnection();
+            this.imglstTransparency = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.pnlGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctrbxTransparency)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sectionBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fSXSE_A321_TutorialDataSet)).BeginInit();
             this.pnlDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -103,27 +102,58 @@
             // 
             // pnlGrid
             // 
+            this.pnlGrid.Controls.Add(this.pctrbxTransparency);
             this.pnlGrid.Controls.Add(this.button2);
+            this.pnlGrid.Controls.Add(this.button1);
             this.pnlGrid.Controls.Add(this.buttonBar1);
             this.pnlGrid.Controls.Add(this.btnResetList);
+            this.pnlGrid.Controls.Add(this.button4);
             this.pnlGrid.Controls.Add(this.itemDataGridView1);
+            this.pnlGrid.Controls.Add(this.btnConnectToggle);
             this.pnlGrid.Location = new System.Drawing.Point(0, 0);
             this.pnlGrid.Name = "pnlGrid";
             this.pnlGrid.Size = new System.Drawing.Size(600, 319);
             this.pnlGrid.TabIndex = 17;
             // 
+            // pctrbxTransparency
+            // 
+            this.pctrbxTransparency.Image = global::Flowcort.Properties.Resources.rotate0;
+            this.pctrbxTransparency.Location = new System.Drawing.Point(254, 282);
+            this.pctrbxTransparency.Name = "pctrbxTransparency";
+            this.pctrbxTransparency.Size = new System.Drawing.Size(32, 32);
+            this.pctrbxTransparency.TabIndex = 27;
+            this.pctrbxTransparency.TabStop = false;
+            this.pctrbxTransparency.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctrbxTransparency_MouseDown);
+            this.pctrbxTransparency.MouseEnter += new System.EventHandler(this.pctrbxTransparency_MouseEnter);
+            this.pctrbxTransparency.MouseLeave += new System.EventHandler(this.pctrbxTransparency_MouseLeave);
+            // 
             // button2
             // 
             this.button2.Image = global::Flowcort.Properties.Resources.RestartSection;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(116, 276);
+            this.button2.Location = new System.Drawing.Point(493, 276);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(106, 40);
             this.button2.TabIndex = 12;
             this.button2.Text = "Restart this Section";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.button2, "Restart just this section");
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.btnResetSection_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Image = global::Flowcort.Properties.Resources.Rotate32;
+            this.button1.Location = new System.Drawing.Point(41, 276);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(38, 38);
+            this.button1.TabIndex = 26;
+            this.toolTip1.SetToolTip(this.button1, "Select portrait or landscape mode");
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnLandscapeOrPortrait);
             // 
             // buttonBar1
             // 
@@ -131,20 +161,35 @@
             this.buttonBar1.Name = "buttonBar1";
             this.buttonBar1.Size = new System.Drawing.Size(600, 38);
             this.buttonBar1.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.buttonBar1, "Select phase of flight");
             this.buttonBar1.ButtonPush += new System.EventHandler(this.btnSection);
             // 
             // btnResetList
             // 
             this.btnResetList.Image = global::Flowcort.Properties.Resources.StartFromBeginning;
             this.btnResetList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResetList.Location = new System.Drawing.Point(4, 276);
+            this.btnResetList.Location = new System.Drawing.Point(387, 276);
             this.btnResetList.Name = "btnResetList";
             this.btnResetList.Size = new System.Drawing.Size(106, 40);
             this.btnResetList.TabIndex = 10;
             this.btnResetList.Text = "Restart from Beginning";
             this.btnResetList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.btnResetList, "Restart the entire list from the very beginning");
             this.btnResetList.UseVisualStyleBackColor = true;
             this.btnResetList.Click += new System.EventHandler(this.btnResetList_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.Control;
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button4.Image = global::Flowcort.Properties.Resources.Settings24;
+            this.button4.Location = new System.Drawing.Point(79, 276);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(38, 38);
+            this.button4.TabIndex = 22;
+            this.toolTip1.SetToolTip(this.button4, "Settings");
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // itemDataGridView1
             // 
@@ -156,14 +201,14 @@
             this.itemDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.itemDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.itemDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.itemDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn10,
@@ -185,14 +230,14 @@
             this.dataGridViewTextBoxColumn20,
             this.dataGridViewTextBoxColumn21});
             this.itemDataGridView1.DataSource = this.itemBindingSource1;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemDataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemDataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.itemDataGridView1.EnableHeadersVisualStyles = false;
             this.itemDataGridView1.Location = new System.Drawing.Point(2, 46);
             this.itemDataGridView1.MultiSelect = false;
@@ -371,63 +416,30 @@
             this.fSXSE_A321_TutorialDataSet.DataSetName = "FSXSE_A321_TutorialDataSet";
             this.fSXSE_A321_TutorialDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // btnConnectToggle
+            // 
+            this.btnConnectToggle.BackColor = System.Drawing.SystemColors.Control;
+            this.btnConnectToggle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
+            this.btnConnectToggle.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnConnectToggle.Image = global::Flowcort.Properties.Resources.Disconnected32;
+            this.btnConnectToggle.Location = new System.Drawing.Point(3, 276);
+            this.btnConnectToggle.Name = "btnConnectToggle";
+            this.btnConnectToggle.Size = new System.Drawing.Size(38, 38);
+            this.btnConnectToggle.TabIndex = 19;
+            this.toolTip1.SetToolTip(this.btnConnectToggle, "Connect to flight sim");
+            this.btnConnectToggle.UseVisualStyleBackColor = false;
+            this.btnConnectToggle.Click += new System.EventHandler(this.btnConnectToggle_Click);
+            // 
             // pnlDetail
             // 
-            this.pnlDetail.Controls.Add(this.lblFSEvents);
-            this.pnlDetail.Controls.Add(this.button1);
-            this.pnlDetail.Controls.Add(this.numericUpDown1);
             this.pnlDetail.Controls.Add(this.txtbxRemarks);
             this.pnlDetail.Controls.Add(this.lblRemarks);
-            this.pnlDetail.Controls.Add(this.button4);
             this.pnlDetail.Controls.Add(this.pictureBox2);
             this.pnlDetail.Controls.Add(this.pictureBox1);
-            this.pnlDetail.Controls.Add(this.btnConnectToggle);
             this.pnlDetail.Location = new System.Drawing.Point(605, 3);
             this.pnlDetail.Name = "pnlDetail";
             this.pnlDetail.Size = new System.Drawing.Size(400, 316);
             this.pnlDetail.TabIndex = 18;
-            // 
-            // lblFSEvents
-            // 
-            this.lblFSEvents.AutoSize = true;
-            this.lblFSEvents.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFSEvents.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblFSEvents.Location = new System.Drawing.Point(127, 8);
-            this.lblFSEvents.Name = "lblFSEvents";
-            this.lblFSEvents.Size = new System.Drawing.Size(131, 29);
-            this.lblFSEvents.TabIndex = 27;
-            this.lblFSEvents.Text = "FS Events";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Image = global::Flowcort.Properties.Resources.Rotate32;
-            this.button1.Location = new System.Drawing.Point(43, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(38, 38);
-            this.button1.TabIndex = 26;
-            this.toolTip1.SetToolTip(this.button1, "Connect to flight sim");
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnLandscapeOrPortrait);
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.BackColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown1.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericUpDown1.Location = new System.Drawing.Point(360, 8);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(30, 29);
-            this.numericUpDown1.TabIndex = 24;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // txtbxRemarks
             // 
@@ -436,11 +448,11 @@
             this.txtbxRemarks.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.itemBindingSource1, "Remarks", true));
             this.txtbxRemarks.Font = new System.Drawing.Font("Verdana", 8.25F);
             this.txtbxRemarks.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtbxRemarks.Location = new System.Drawing.Point(4, 73);
+            this.txtbxRemarks.Location = new System.Drawing.Point(1, 22);
             this.txtbxRemarks.Multiline = true;
             this.txtbxRemarks.Name = "txtbxRemarks";
             this.txtbxRemarks.ReadOnly = true;
-            this.txtbxRemarks.Size = new System.Drawing.Size(179, 243);
+            this.txtbxRemarks.Size = new System.Drawing.Size(179, 290);
             this.txtbxRemarks.TabIndex = 22;
             this.txtbxRemarks.Text = "This is test text";
             // 
@@ -448,57 +460,33 @@
             // 
             this.lblRemarks.AutoSize = true;
             this.lblRemarks.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblRemarks.Location = new System.Drawing.Point(3, 51);
+            this.lblRemarks.Location = new System.Drawing.Point(3, 6);
             this.lblRemarks.Name = "lblRemarks";
             this.lblRemarks.Size = new System.Drawing.Size(60, 13);
             this.lblRemarks.TabIndex = 21;
             this.lblRemarks.Text = "REMARKS";
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.SystemColors.Control;
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button4.Image = global::Flowcort.Properties.Resources.Settings24;
-            this.button4.Location = new System.Drawing.Point(83, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(38, 38);
-            this.button4.TabIndex = 22;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(188, 199);
+            this.pictureBox2.Location = new System.Drawing.Point(188, 194);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(208, 117);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "Click for larger version");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(188, 73);
+            this.pictureBox1.Location = new System.Drawing.Point(188, 22);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(208, 117);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Click for larger version");
             this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
-            // 
-            // btnConnectToggle
-            // 
-            this.btnConnectToggle.BackColor = System.Drawing.SystemColors.Control;
-            this.btnConnectToggle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.btnConnectToggle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnConnectToggle.Image = global::Flowcort.Properties.Resources.Disconnected32;
-            this.btnConnectToggle.Location = new System.Drawing.Point(3, 3);
-            this.btnConnectToggle.Name = "btnConnectToggle";
-            this.btnConnectToggle.Size = new System.Drawing.Size(38, 38);
-            this.btnConnectToggle.TabIndex = 19;
-            this.toolTip1.SetToolTip(this.btnConnectToggle, "Connect to flight sim");
-            this.btnConnectToggle.UseVisualStyleBackColor = false;
-            this.btnConnectToggle.Click += new System.EventHandler(this.btnConnectToggle_Click);
             // 
             // sectionTableAdapter1
             // 
@@ -516,19 +504,18 @@
             // 
             this.itemTableAdapter1.ClearBeforeFill = true;
             // 
-            // sqLiteConnection1
+            // imglstTransparency
             // 
-            this.sqLiteConnection1.BusyTimeout = 0;
-            this.sqLiteConnection1.ConnectionString = "data source=\"C:\\Users\\Derek\\Documents\\Visual Studio 2013\\Projects\\Flowcort\\Flowco" +
-    "rt\\FSXSE_A321_Tutorial\"";
-            this.sqLiteConnection1.DefaultDbType = null;
-            this.sqLiteConnection1.DefaultTimeout = 30;
-            this.sqLiteConnection1.DefaultTypeName = null;
-            this.sqLiteConnection1.Flags = System.Data.SQLite.SQLiteConnectionFlags.None;
-            this.sqLiteConnection1.ParseViaFramework = false;
-            this.sqLiteConnection1.PrepareRetries = 3;
-            this.sqLiteConnection1.ProgressOps = 0;
-            this.sqLiteConnection1.VfsName = null;
+            this.imglstTransparency.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglstTransparency.ImageStream")));
+            this.imglstTransparency.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglstTransparency.Images.SetKeyName(0, "rotate0.png");
+            this.imglstTransparency.Images.SetKeyName(1, "rotate1.png");
+            this.imglstTransparency.Images.SetKeyName(2, "rotate2.png");
+            this.imglstTransparency.Images.SetKeyName(3, "rotate3.png");
+            this.imglstTransparency.Images.SetKeyName(4, "rotate4.png");
+            this.imglstTransparency.Images.SetKeyName(5, "rotate5.png");
+            this.imglstTransparency.Images.SetKeyName(6, "rotate6.png");
+            this.imglstTransparency.Images.SetKeyName(7, "rotate7.png");
             // 
             // Form2
             // 
@@ -550,13 +537,13 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyUp);
             this.contextMenuStrip1.ResumeLayout(false);
             this.pnlGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pctrbxTransparency)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sectionBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fSXSE_A321_TutorialDataSet)).EndInit();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -583,9 +570,7 @@
         private System.Windows.Forms.Button btnConnectToggle;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label lblFSEvents;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
@@ -607,6 +592,7 @@
         private System.Windows.Forms.Button btnResetList;
         private ButtonBar.ButtonBar buttonBar1;
         private System.Windows.Forms.Button button2;
-        private System.Data.SQLite.SQLiteConnection sqLiteConnection1;
+        private System.Windows.Forms.PictureBox pctrbxTransparency;
+        private System.Windows.Forms.ImageList imglstTransparency;
     }
 }
