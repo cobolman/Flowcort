@@ -111,6 +111,9 @@ namespace Flowcort
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            pctrbxRemarks.Parent = txtbxRemarks;
+            pctrbxRemarks.Location = new Point(1, 1);
+
             this.sectionTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Section);
             this.itemTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Item);
 
@@ -212,8 +215,9 @@ namespace Flowcort
 
         private void itemBindingSource_PositionChanged(object sender, EventArgs e)
         {
-            pictureBox1.ImageLocation = "";
-            pictureBox2.ImageLocation = "";
+            pictureBox1.Image = Flowcort.Properties.Resources.Flowcort208x117;
+            pictureBox2.Image = Flowcort.Properties.Resources.FlowcortYouTube;
+            pctrbxRemarks.Visible = true;
 
             if (itemBindingSource1.Current != null)
             {
@@ -222,6 +226,10 @@ namespace Flowcort
 
                 pictureBox1.ImageLocation = qualifyFileName(img1Locn);
                 pictureBox2.ImageLocation = qualifyFileName(img2Locn);
+
+                if (((DataRowView)itemBindingSource1.Current).Row["Remarks"].ToString() != "")
+                    pctrbxRemarks.Visible = false;
+
             }
         }
 
@@ -547,14 +555,14 @@ namespace Flowcort
         {
             try
             {
-                this.Size = new Size(1024, 360);
+                this.Size = new Size(1016, 324);
 
                 pnlDetail.Location = new Point(605, 3);
-                pnlDetail.Size = new Size(400, 316);
-                txtbxRemarks.Size = new Size(179, 290);
+                pnlDetail.Size = new Size(391, 278);
+                txtbxRemarks.Size = new Size(179, 277);
 
-                pictureBox1.Location = new Point(188, 22);
-                pictureBox2.Location = new Point(188, 199);
+                pictureBox1.Location = new Point(184, 0);
+                pictureBox2.Location = new Point(184, 161);
                 // numericUpDown1.Location = new Point(360, 8);
 
                 // btnAltitude.Location = new Point(58, 276);
@@ -570,14 +578,14 @@ namespace Flowcort
         {
             try
             {
-                this.Size = new Size(618, 640);
+                this.Size = new Size(618, 570);
 
-                pnlDetail.Location = new Point(3, 325);
+                pnlDetail.Location = new Point(3, 285);
                 pnlDetail.Size = new Size(600, 319);
                 txtbxRemarks.Size = new Size(594, 120);
 
-                pictureBox1.Location = new Point(4, 155);
-                pictureBox2.Location = new Point(384, 155);
+                pictureBox1.Location = new Point(4, 125);
+                pictureBox2.Location = new Point(384, 125);
                 // numericUpDown1.Location = new Point(567, 3);
 
                 // btnAltitude.Location = new Point(259, 199);
@@ -698,6 +706,11 @@ namespace Flowcort
         private void pctrbxTransparency_MouseLeave(object sender, EventArgs e)
         {
             itemDataGridView1.Focus();
+        }
+
+        private void itemDataGridView1_MouseMove(object sender, MouseEventArgs e)
+        {
+            flwButtonPanel.Visible = e.X < 10;
         }
 
     }

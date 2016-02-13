@@ -80,8 +80,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>paper_plane_icon32x32.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ButtonBar">
@@ -235,6 +234,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Oxygen-Icons.org-Oxygen-Actions-mail-mark-task.ico" />
+    <Content Include="paper_plane_icon32x32.ico" />
+    <None Include="Resources\FlowcortYouTube.png" />
+    <None Include="Resources\Flowcort208x117.png" />
+    <None Include="Resources\UserComments.png" />
+    <None Include="Resources\Remarks3.png" />
+    <None Include="Resources\Remarks2.png" />
+    <None Include="Resources\Remarks1.png" />
+    <None Include="Resources\Remarks.png" />
     <None Include="Resources\rotate01.png" />
     <None Include="Resources\rotate7.png" />
     <None Include="Resources\rotate6.png" />

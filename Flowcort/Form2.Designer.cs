@@ -29,18 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlGrid = new System.Windows.Forms.Panel();
-            this.pctrbxTransparency = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.flwButtonPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnConnectToggle = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.buttonBar1 = new ButtonBar.ButtonBar();
-            this.btnResetList = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.btnResetList = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pctrbxTransparency = new System.Windows.Forms.PictureBox();
+            this.buttonBar1 = new ButtonBar.ButtonBar();
             this.itemDataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,10 +66,9 @@
             this.itemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sectionBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.fSXSE_A321_TutorialDataSet = new Flowcort.FSXSE_A321_TutorialDataSet();
-            this.btnConnectToggle = new System.Windows.Forms.Button();
             this.pnlDetail = new System.Windows.Forms.Panel();
+            this.pctrbxRemarks = new System.Windows.Forms.PictureBox();
             this.txtbxRemarks = new System.Windows.Forms.TextBox();
-            this.lblRemarks = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.sectionTableAdapter1 = new Flowcort.FSXSE_A321_TutorialDataSetTableAdapters.SectionTableAdapter();
@@ -76,12 +78,15 @@
             this.imglstTransparency = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.pnlGrid.SuspendLayout();
+            this.flwButtonPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxTransparency)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sectionBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fSXSE_A321_TutorialDataSet)).BeginInit();
             this.pnlDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctrbxRemarks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -102,44 +107,43 @@
             // 
             // pnlGrid
             // 
-            this.pnlGrid.Controls.Add(this.pctrbxTransparency);
-            this.pnlGrid.Controls.Add(this.button2);
-            this.pnlGrid.Controls.Add(this.button1);
+            this.pnlGrid.Controls.Add(this.flwButtonPanel);
             this.pnlGrid.Controls.Add(this.buttonBar1);
-            this.pnlGrid.Controls.Add(this.btnResetList);
-            this.pnlGrid.Controls.Add(this.button4);
             this.pnlGrid.Controls.Add(this.itemDataGridView1);
-            this.pnlGrid.Controls.Add(this.btnConnectToggle);
             this.pnlGrid.Location = new System.Drawing.Point(0, 0);
             this.pnlGrid.Name = "pnlGrid";
-            this.pnlGrid.Size = new System.Drawing.Size(600, 319);
+            this.pnlGrid.Size = new System.Drawing.Size(600, 281);
             this.pnlGrid.TabIndex = 17;
             // 
-            // pctrbxTransparency
+            // flwButtonPanel
             // 
-            this.pctrbxTransparency.Image = global::Flowcort.Properties.Resources.rotate0;
-            this.pctrbxTransparency.Location = new System.Drawing.Point(254, 282);
-            this.pctrbxTransparency.Name = "pctrbxTransparency";
-            this.pctrbxTransparency.Size = new System.Drawing.Size(32, 32);
-            this.pctrbxTransparency.TabIndex = 27;
-            this.pctrbxTransparency.TabStop = false;
-            this.pctrbxTransparency.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctrbxTransparency_MouseDown);
-            this.pctrbxTransparency.MouseEnter += new System.EventHandler(this.pctrbxTransparency_MouseEnter);
-            this.pctrbxTransparency.MouseLeave += new System.EventHandler(this.pctrbxTransparency_MouseLeave);
+            this.flwButtonPanel.Controls.Add(this.btnConnectToggle);
+            this.flwButtonPanel.Controls.Add(this.button1);
+            this.flwButtonPanel.Controls.Add(this.button4);
+            this.flwButtonPanel.Controls.Add(this.btnResetList);
+            this.flwButtonPanel.Controls.Add(this.button2);
+            this.flwButtonPanel.Controls.Add(this.pictureBox3);
+            this.flwButtonPanel.Controls.Add(this.pctrbxTransparency);
+            this.flwButtonPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flwButtonPanel.Location = new System.Drawing.Point(0, 0);
+            this.flwButtonPanel.Name = "flwButtonPanel";
+            this.flwButtonPanel.Size = new System.Drawing.Size(44, 281);
+            this.flwButtonPanel.TabIndex = 29;
+            this.flwButtonPanel.Visible = false;
             // 
-            // button2
+            // btnConnectToggle
             // 
-            this.button2.Image = global::Flowcort.Properties.Resources.RestartSection;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(493, 276);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 40);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Restart this Section";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.button2, "Restart just this section");
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btnResetSection_Click);
+            this.btnConnectToggle.BackColor = System.Drawing.SystemColors.Control;
+            this.btnConnectToggle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
+            this.btnConnectToggle.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnConnectToggle.Image = global::Flowcort.Properties.Resources.Disconnected32;
+            this.btnConnectToggle.Location = new System.Drawing.Point(3, 3);
+            this.btnConnectToggle.Name = "btnConnectToggle";
+            this.btnConnectToggle.Size = new System.Drawing.Size(38, 38);
+            this.btnConnectToggle.TabIndex = 19;
+            this.toolTip1.SetToolTip(this.btnConnectToggle, "Connect to flight sim");
+            this.btnConnectToggle.UseVisualStyleBackColor = false;
+            this.btnConnectToggle.Click += new System.EventHandler(this.btnConnectToggle_Click);
             // 
             // button1
             // 
@@ -147,13 +151,74 @@
             this.button1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button1.Image = global::Flowcort.Properties.Resources.Rotate32;
-            this.button1.Location = new System.Drawing.Point(41, 276);
+            this.button1.Location = new System.Drawing.Point(3, 47);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(38, 38);
             this.button1.TabIndex = 26;
             this.toolTip1.SetToolTip(this.button1, "Select portrait or landscape mode");
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.btnLandscapeOrPortrait);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.Control;
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button4.Image = global::Flowcort.Properties.Resources.Settings24;
+            this.button4.Location = new System.Drawing.Point(3, 91);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(38, 38);
+            this.button4.TabIndex = 22;
+            this.toolTip1.SetToolTip(this.button4, "Settings");
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // btnResetList
+            // 
+            this.btnResetList.Image = global::Flowcort.Properties.Resources.StartFromBeginning;
+            this.btnResetList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResetList.Location = new System.Drawing.Point(3, 135);
+            this.btnResetList.Name = "btnResetList";
+            this.btnResetList.Size = new System.Drawing.Size(38, 38);
+            this.btnResetList.TabIndex = 10;
+            this.btnResetList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.btnResetList, "Restart the entire list from the very beginning");
+            this.btnResetList.UseVisualStyleBackColor = true;
+            this.btnResetList.Click += new System.EventHandler(this.btnResetList_Click);
+            // 
+            // button2
+            // 
+            this.button2.Image = global::Flowcort.Properties.Resources.RestartSection;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(3, 179);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(38, 38);
+            this.button2.TabIndex = 12;
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.button2, "Restart just this section");
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnResetSection_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(3, 223);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(38, 10);
+            this.pictureBox3.TabIndex = 28;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pctrbxTransparency
+            // 
+            this.pctrbxTransparency.Image = global::Flowcort.Properties.Resources.rotate0;
+            this.pctrbxTransparency.Location = new System.Drawing.Point(3, 239);
+            this.pctrbxTransparency.Name = "pctrbxTransparency";
+            this.pctrbxTransparency.Size = new System.Drawing.Size(38, 38);
+            this.pctrbxTransparency.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pctrbxTransparency.TabIndex = 27;
+            this.pctrbxTransparency.TabStop = false;
+            this.toolTip1.SetToolTip(this.pctrbxTransparency, "Rotate to Increase / Decrease");
+            this.pctrbxTransparency.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctrbxTransparency_MouseDown);
+            this.pctrbxTransparency.MouseEnter += new System.EventHandler(this.pctrbxTransparency_MouseEnter);
+            this.pctrbxTransparency.MouseLeave += new System.EventHandler(this.pctrbxTransparency_MouseLeave);
             // 
             // buttonBar1
             // 
@@ -163,33 +228,6 @@
             this.buttonBar1.TabIndex = 11;
             this.toolTip1.SetToolTip(this.buttonBar1, "Select phase of flight");
             this.buttonBar1.ButtonPush += new System.EventHandler(this.btnSection);
-            // 
-            // btnResetList
-            // 
-            this.btnResetList.Image = global::Flowcort.Properties.Resources.StartFromBeginning;
-            this.btnResetList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResetList.Location = new System.Drawing.Point(387, 276);
-            this.btnResetList.Name = "btnResetList";
-            this.btnResetList.Size = new System.Drawing.Size(106, 40);
-            this.btnResetList.TabIndex = 10;
-            this.btnResetList.Text = "Restart from Beginning";
-            this.btnResetList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.btnResetList, "Restart the entire list from the very beginning");
-            this.btnResetList.UseVisualStyleBackColor = true;
-            this.btnResetList.Click += new System.EventHandler(this.btnResetList_Click);
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.SystemColors.Control;
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button4.Image = global::Flowcort.Properties.Resources.Settings24;
-            this.button4.Location = new System.Drawing.Point(79, 276);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(38, 38);
-            this.button4.TabIndex = 22;
-            this.toolTip1.SetToolTip(this.button4, "Settings");
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // itemDataGridView1
             // 
@@ -201,14 +239,14 @@
             this.itemDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.itemDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.itemDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.itemDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn10,
@@ -230,14 +268,14 @@
             this.dataGridViewTextBoxColumn20,
             this.dataGridViewTextBoxColumn21});
             this.itemDataGridView1.DataSource = this.itemBindingSource1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemDataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemDataGridView1.DefaultCellStyle = dataGridViewCellStyle10;
             this.itemDataGridView1.EnableHeadersVisualStyles = false;
             this.itemDataGridView1.Location = new System.Drawing.Point(2, 46);
             this.itemDataGridView1.MultiSelect = false;
@@ -247,10 +285,11 @@
             this.itemDataGridView1.RowHeadersVisible = false;
             this.itemDataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.itemDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.itemDataGridView1.Size = new System.Drawing.Size(596, 224);
+            this.itemDataGridView1.Size = new System.Drawing.Size(596, 234);
             this.itemDataGridView1.TabIndex = 0;
             this.itemDataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemDataGridView1_DataBindingComplete);
             this.itemDataGridView1.SelectionChanged += new System.EventHandler(this.itemDataGridView1_SelectionChanged);
+            this.itemDataGridView1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.itemDataGridView1_MouseMove);
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -416,59 +455,46 @@
             this.fSXSE_A321_TutorialDataSet.DataSetName = "FSXSE_A321_TutorialDataSet";
             this.fSXSE_A321_TutorialDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // btnConnectToggle
-            // 
-            this.btnConnectToggle.BackColor = System.Drawing.SystemColors.Control;
-            this.btnConnectToggle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.btnConnectToggle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnConnectToggle.Image = global::Flowcort.Properties.Resources.Disconnected32;
-            this.btnConnectToggle.Location = new System.Drawing.Point(3, 276);
-            this.btnConnectToggle.Name = "btnConnectToggle";
-            this.btnConnectToggle.Size = new System.Drawing.Size(38, 38);
-            this.btnConnectToggle.TabIndex = 19;
-            this.toolTip1.SetToolTip(this.btnConnectToggle, "Connect to flight sim");
-            this.btnConnectToggle.UseVisualStyleBackColor = false;
-            this.btnConnectToggle.Click += new System.EventHandler(this.btnConnectToggle_Click);
-            // 
             // pnlDetail
             // 
+            this.pnlDetail.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlDetail.Controls.Add(this.pctrbxRemarks);
             this.pnlDetail.Controls.Add(this.txtbxRemarks);
-            this.pnlDetail.Controls.Add(this.lblRemarks);
             this.pnlDetail.Controls.Add(this.pictureBox2);
             this.pnlDetail.Controls.Add(this.pictureBox1);
             this.pnlDetail.Location = new System.Drawing.Point(605, 3);
             this.pnlDetail.Name = "pnlDetail";
-            this.pnlDetail.Size = new System.Drawing.Size(400, 316);
+            this.pnlDetail.Size = new System.Drawing.Size(391, 278);
             this.pnlDetail.TabIndex = 18;
+            // 
+            // pctrbxRemarks
+            // 
+            this.pctrbxRemarks.Image = ((System.Drawing.Image)(resources.GetObject("pctrbxRemarks.Image")));
+            this.pctrbxRemarks.Location = new System.Drawing.Point(1, 1);
+            this.pctrbxRemarks.Name = "pctrbxRemarks";
+            this.pctrbxRemarks.Size = new System.Drawing.Size(45, 14);
+            this.pctrbxRemarks.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pctrbxRemarks.TabIndex = 23;
+            this.pctrbxRemarks.TabStop = false;
             // 
             // txtbxRemarks
             // 
             this.txtbxRemarks.BackColor = System.Drawing.SystemColors.Control;
             this.txtbxRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtbxRemarks.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.itemBindingSource1, "Remarks", true));
-            this.txtbxRemarks.Font = new System.Drawing.Font("Verdana", 8.25F);
+            this.txtbxRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtbxRemarks.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtbxRemarks.Location = new System.Drawing.Point(1, 22);
+            this.txtbxRemarks.Location = new System.Drawing.Point(1, 1);
             this.txtbxRemarks.Multiline = true;
             this.txtbxRemarks.Name = "txtbxRemarks";
             this.txtbxRemarks.ReadOnly = true;
-            this.txtbxRemarks.Size = new System.Drawing.Size(179, 290);
+            this.txtbxRemarks.Size = new System.Drawing.Size(179, 277);
             this.txtbxRemarks.TabIndex = 22;
-            this.txtbxRemarks.Text = "This is test text";
-            // 
-            // lblRemarks
-            // 
-            this.lblRemarks.AutoSize = true;
-            this.lblRemarks.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblRemarks.Location = new System.Drawing.Point(3, 6);
-            this.lblRemarks.Name = "lblRemarks";
-            this.lblRemarks.Size = new System.Drawing.Size(60, 13);
-            this.lblRemarks.TabIndex = 21;
-            this.lblRemarks.Text = "REMARKS";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(188, 194);
+            this.pictureBox2.Image = global::Flowcort.Properties.Resources.FlowcortYouTube;
+            this.pictureBox2.Location = new System.Drawing.Point(184, 161);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(208, 117);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -479,7 +505,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(188, 22);
+            this.pictureBox1.Image = global::Flowcort.Properties.Resources.Flowcort208x117;
+            this.pictureBox1.Location = new System.Drawing.Point(184, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(208, 117);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -522,7 +549,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1008, 323);
+            this.ClientSize = new System.Drawing.Size(1000, 285);
             this.Controls.Add(this.pnlDetail);
             this.Controls.Add(this.pnlGrid);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -537,6 +564,8 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyUp);
             this.contextMenuStrip1.ResumeLayout(false);
             this.pnlGrid.ResumeLayout(false);
+            this.flwButtonPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxTransparency)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource1)).EndInit();
@@ -544,6 +573,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.fSXSE_A321_TutorialDataSet)).EndInit();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctrbxRemarks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -557,7 +587,6 @@
         private System.Windows.Forms.Panel pnlDetail;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblRemarks;
         private FSXSE_A321_TutorialDataSet fSXSE_A321_TutorialDataSet;
         private System.Windows.Forms.BindingSource sectionBindingSource1;
         private FSXSE_A321_TutorialDataSetTableAdapters.SectionTableAdapter sectionTableAdapter1;
@@ -594,5 +623,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pctrbxTransparency;
         private System.Windows.Forms.ImageList imglstTransparency;
+        private System.Windows.Forms.FlowLayoutPanel flwButtonPanel;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pctrbxRemarks;
     }
 }
