@@ -18,8 +18,11 @@ namespace Flowcort
         // Form Variables
 
         bool portrait = false;
-        Bitmap FlowcortYouTube;
-        Bitmap Flowcort208x117;
+        Bitmap FlowcortYouTubeBW;
+        Bitmap FlowcortYouTubeC;
+
+        Bitmap Flowcort208x117BW;
+        Bitmap Flowcort208x117C;
 
         // User-defined win32 event
         const int WM_USER_SIMCONNECT = 0x0402;
@@ -116,11 +119,13 @@ namespace Flowcort
             pctrbxRemarks.Parent = txtbxRemarks;
             pctrbxRemarks.Location = new Point(1, 1);
 
-            FlowcortYouTube = Flowcort.Properties.Resources.FlowcortYouTube;
-            pictureBox2.Image = FlowcortYouTube;
+            FlowcortYouTubeBW = Flowcort.Properties.Resources.FlowcortYouTubeBW;
+            FlowcortYouTubeC = Flowcort.Properties.Resources.FlowcortYouTubeC;
+            pictureBox2.Image = FlowcortYouTubeBW;
 
-            Flowcort208x117 = Flowcort.Properties.Resources.Flowcort208x117;
-            pictureBox1.Image = Flowcort208x117;
+            Flowcort208x117BW = Flowcort.Properties.Resources.Flowcort208x117BW;
+            Flowcort208x117C = Flowcort.Properties.Resources.Flowcort208x117C;
+            pictureBox1.Image = Flowcort208x117BW;
 
             this.sectionTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Section);
             this.itemTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Item);
@@ -280,8 +285,8 @@ namespace Flowcort
 
         private void itemBindingSource_PositionChanged(object sender, EventArgs e)
         {
-            pictureBox1.Image = Flowcort208x117;
-            pictureBox2.Image = FlowcortYouTube;
+            pictureBox1.Image = Flowcort208x117BW;
+            pictureBox2.Image = FlowcortYouTubeBW;
             pctrbxRemarks.Visible = true;
 
             if (itemBindingSource1.Current != null)
@@ -312,7 +317,7 @@ namespace Flowcort
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (pictureBox2.Image == FlowcortYouTube)
+            if (pictureBox1.Image == Flowcort208x117C)
             {
                 System.Diagnostics.Process.Start("http://www.flowcort.com");
             }
@@ -324,7 +329,7 @@ namespace Flowcort
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            if ( pictureBox2.Image == FlowcortYouTube )
+            if ( pictureBox2.Image == FlowcortYouTubeC )
             {
                 System.Diagnostics.Process.Start("https://www.youtube.com/channel/UCEvh0d135xV0qnuR8BwnDvw");
             }
@@ -802,6 +807,30 @@ namespace Flowcort
         private void itemDataGridView1_MouseMove(object sender, MouseEventArgs e)
         {
             flwButtonPanel.Visible = e.X < 10;
+        }
+
+        private void pictureBox2_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox2.Image == FlowcortYouTubeBW)
+                pictureBox2.Image = FlowcortYouTubeC;
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == Flowcort208x117BW)
+            pictureBox1.Image = Flowcort208x117C;
+        }
+
+        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            if (pictureBox2.Image == FlowcortYouTubeC)
+                pictureBox2.Image = FlowcortYouTubeBW;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image == Flowcort208x117C)
+                pictureBox1.Image = Flowcort208x117BW;
         }
 
     }

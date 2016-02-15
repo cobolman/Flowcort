@@ -233,6 +233,10 @@
     <None Include="Resources\Rotate32.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App Icons\Flowcort208x117BW.png" />
+    <None Include="App Icons\Flowcort208x117C.png" />
+    <None Include="App Icons\FlowcortYouTubeBW.png" />
+    <None Include="App Icons\FlowcortYouTubeC.png" />
     <Content Include="Oxygen-Icons.org-Oxygen-Actions-mail-mark-task.ico" />
     <Content Include="paper_plane_icon32x32.ico" />
     <None Include="Resources\FlowcortYouTube.png" />

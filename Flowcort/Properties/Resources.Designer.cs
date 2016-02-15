@@ -113,9 +113,9 @@ namespace Flowcort.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Flowcort208x117 {
+        internal static System.Drawing.Bitmap Flowcort208x117BW {
             get {
-                object obj = ResourceManager.GetObject("Flowcort208x117", resourceCulture);
+                object obj = ResourceManager.GetObject("Flowcort208x117BW", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,29 @@ namespace Flowcort.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FlowcortYouTube {
+        internal static System.Drawing.Bitmap Flowcort208x117C {
             get {
-                object obj = ResourceManager.GetObject("FlowcortYouTube", resourceCulture);
+                object obj = ResourceManager.GetObject("Flowcort208x117C", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FlowcortYouTubeBW {
+            get {
+                object obj = ResourceManager.GetObject("FlowcortYouTubeBW", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FlowcortYouTubeC {
+            get {
+                object obj = ResourceManager.GetObject("FlowcortYouTubeC", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
