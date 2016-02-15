@@ -18,6 +18,8 @@ namespace Flowcort
         // Form Variables
 
         bool portrait = false;
+        Bitmap FlowcortYouTube;
+        Bitmap Flowcort208x117;
 
         // User-defined win32 event
         const int WM_USER_SIMCONNECT = 0x0402;
@@ -114,6 +116,12 @@ namespace Flowcort
             pctrbxRemarks.Parent = txtbxRemarks;
             pctrbxRemarks.Location = new Point(1, 1);
 
+            FlowcortYouTube = Flowcort.Properties.Resources.FlowcortYouTube;
+            pictureBox2.Image = FlowcortYouTube;
+
+            Flowcort208x117 = Flowcort.Properties.Resources.Flowcort208x117;
+            pictureBox1.Image = Flowcort208x117;
+
             this.sectionTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Section);
             this.itemTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Item);
 
@@ -165,17 +173,23 @@ namespace Flowcort
 
         private void toggleDoneUndone()
         {
-            using (DataGridViewRow dgv = itemDataGridView1.CurrentRow)
+            if (itemDataGridView1.CurrentRow != null)
             {
-                DataRowView drv = itemDataGridView1.CurrentRow.DataBoundItem as DataRowView;
-                drv["Done"] = !(bool)drv["Done"];
-
-                if (allItemsAreDone())
-                    nextSection();
-                else
+                using (DataGridViewRow dgv = itemDataGridView1.CurrentRow)
                 {
-                    ColorizeRow(dgv);
-                    nextActionItem(true);
+                    DataRowView drv = dgv.DataBoundItem as DataRowView;
+                    drv["Done"] = !(bool)drv["Done"];
+
+                    itemBindingSource1.EndEdit();
+                    itemTableAdapter1.Update(fSXSE_A321_TutorialDataSet.Item);
+
+                    if (allItemsInSectionAreDone())
+                        nextSection();
+                    else
+                    {
+                        ColorizeRow(dgv);
+                        nextActionItem(true);
+                    }
                 }
             }
         }
@@ -185,20 +199,71 @@ namespace Flowcort
             sectionBindingSource1.MoveNext();
         }
 
-        private bool allItemsAreDone()
+        private bool allItemsInSectionAreDone()
         {
             bool result = true;
 
             foreach (DataGridViewRow row in itemDataGridView1.Rows)
             {
-                if (Convert.ToBoolean(row.Cells["Done"].Value) == false)
+                if (!(Convert.ToBoolean(row.Cells["Subsection"].Value) == true ||
+                    Convert.ToBoolean(row.Cells["Event"].Value) == true))
                 { 
-                    result = false;
-                    break;
+                    if (Convert.ToBoolean(row.Cells["Done"].Value) == false)
+                    { 
+                        result = false;
+                        break;
+                    }
                 }
             }
 
             return result;
+        }
+
+        private bool allItemsAreDone()
+        {
+            using (SQLiteCommand cmd = new SQLiteCommand("SELECT Count(*) FROM Item WHERE Done = 0 AND Subsection = 0 AND EVENT = 0;", itemTableAdapter1.Connection))
+            {
+                if (itemTableAdapter1.Connection.State != ConnectionState.Open)
+                    itemTableAdapter1.Connection.Open();
+
+                return (Convert.ToInt16(cmd.ExecuteScalar()) == 0);
+            }
+        }
+
+        private bool allItemsAreUndone()
+        {
+            using (SQLiteCommand cmd = new SQLiteCommand("SELECT Count(*) FROM Item WHERE Done = 1 AND Subsection = 0 AND Event = 0;", itemTableAdapter1.Connection))
+            {
+                if (itemTableAdapter1.Connection.State != ConnectionState.Open)
+                    itemTableAdapter1.Connection.Open();
+
+                return( Convert.ToInt16(cmd.ExecuteScalar()) == 0);
+            }
+        }
+
+        private bool sectionIsPartiallyDone()
+        {
+            bool result = true;
+
+            foreach (DataGridViewRow row in itemDataGridView1.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["Subsection"].Value) == false &&
+                    Convert.ToBoolean(row.Cells["Event"].Value) == false)
+                {
+                    if (Convert.ToBoolean(row.Cells["Done"].Value) != result)
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private bool listIsPartiallyDone()
+        {
+            return !(allItemsAreDone() ^ allItemsAreUndone());
         }
 
         private void ShowHideFlowcort()
@@ -215,8 +280,8 @@ namespace Flowcort
 
         private void itemBindingSource_PositionChanged(object sender, EventArgs e)
         {
-            pictureBox1.Image = Flowcort.Properties.Resources.Flowcort208x117;
-            pictureBox2.Image = Flowcort.Properties.Resources.FlowcortYouTube;
+            pictureBox1.Image = Flowcort208x117;
+            pictureBox2.Image = FlowcortYouTube;
             pctrbxRemarks.Visible = true;
 
             if (itemBindingSource1.Current != null)
@@ -247,12 +312,26 @@ namespace Flowcort
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            showImage("Image1", ".png");
+            if (pictureBox2.Image == FlowcortYouTube)
+            {
+                System.Diagnostics.Process.Start("http://www.flowcort.com");
+            }
+            else
+            {
+                showImage("Image1", ".png");
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            showImage("Image2", ".png");
+            if ( pictureBox2.Image == FlowcortYouTube )
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/channel/UCEvh0d135xV0qnuR8BwnDvw");
+            }
+            else
+            {
+               showImage("Image2", ".png");
+            }
         }
 
         private void showImage(string columnName, string imgType)
@@ -356,42 +435,44 @@ namespace Flowcort
 
         private void nextActionItem(Boolean directionNext)
         {
-            int curLocn = itemDataGridView1.SelectedRows[0].Index;
-            int rowCount = itemDataGridView1.Rows.Count;
-            
-            if (directionNext)
+            if (itemDataGridView1.SelectedRows.Count > 0)
             {
-                for (int n = curLocn + 1; n < rowCount; n++)
+                int curLocn = itemDataGridView1.SelectedRows[0].Index;
+                int rowCount = itemDataGridView1.Rows.Count;
+
+                if (directionNext)
                 {
-                    DataGridViewRow row = itemDataGridView1.Rows[n];
-                    if ( !(Convert.ToBoolean(row.Cells["Event"].Value) || Convert.ToBoolean(row.Cells["Subsection"].Value) ))
+                    for (int n = curLocn + 1; n < rowCount; n++)
                     {
-                        row.Selected = true;
-                        break;
+                        DataGridViewRow row = itemDataGridView1.Rows[n];
+                        if (!(Convert.ToBoolean(row.Cells["Event"].Value) || Convert.ToBoolean(row.Cells["Subsection"].Value)))
+                        {
+                            row.Selected = true;
+                            break;
+                        }
                     }
                 }
-            }
-            else
-            {
-                for (int n = curLocn - 1; n >= 0; n--)
+                else
                 {
-                    DataGridViewRow row = itemDataGridView1.Rows[n];
-                    if (!(Convert.ToBoolean(row.Cells["Event"].Value) || Convert.ToBoolean(row.Cells["Subsection"].Value)))
+                    for (int n = curLocn - 1; n >= 0; n--)
                     {
-                        row.Selected = true;
-                        break;
+                        DataGridViewRow row = itemDataGridView1.Rows[n];
+                        if (!(Convert.ToBoolean(row.Cells["Event"].Value) || Convert.ToBoolean(row.Cells["Subsection"].Value)))
+                        {
+                            row.Selected = true;
+                            break;
+                        }
                     }
                 }
+
+                int x = itemDataGridView1.SelectedRows[0].Index;
+                int middle = itemDataGridView1.DisplayedRowCount(false) / 2;
+
+                itemDataGridView1.CurrentCell = itemDataGridView1.SelectedRows[0].Cells[2];
+
+                if (x > middle)
+                    itemDataGridView1.FirstDisplayedScrollingRowIndex = x - middle;
             }
-
-            int x = itemDataGridView1.SelectedRows[0].Index;
-            int middle = itemDataGridView1.DisplayedRowCount(false) / 2;
-
-            itemDataGridView1.CurrentCell = itemDataGridView1.SelectedRows[0].Cells[2];
-
-            if (x > middle)
-                itemDataGridView1.FirstDisplayedScrollingRowIndex = x - middle;
-
         }
 
         private void btnConnectToggle_Click(object sender, EventArgs e)
@@ -465,8 +546,13 @@ namespace Flowcort
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Settings settings = new Settings();
-            settings.ShowDialog();
+            //Settings settings = new Settings();
+            //settings.ShowDialog();
+
+            if (listIsPartiallyDone())
+                MessageBox.Show("List partially done");
+            else
+                MessageBox.Show("List is all undone or done");
         }
 
         private Button findSectionButtonByText(String buttonText)
@@ -555,14 +641,14 @@ namespace Flowcort
         {
             try
             {
-                this.Size = new Size(1016, 324);
+                this.Size = new Size(1011, 322);
 
-                pnlDetail.Location = new Point(605, 3);
+                pnlDetail.Location = new Point(600, 3);
                 pnlDetail.Size = new Size(391, 278);
-                txtbxRemarks.Size = new Size(179, 277);
+                txtbxRemarks.Size = new Size(179, 276);
 
-                pictureBox1.Location = new Point(184, 0);
-                pictureBox2.Location = new Point(184, 161);
+                pictureBox1.Location = new Point(181, 0);
+                pictureBox2.Location = new Point(181, 161);
                 // numericUpDown1.Location = new Point(360, 8);
 
                 // btnAltitude.Location = new Point(58, 276);
@@ -578,14 +664,14 @@ namespace Flowcort
         {
             try
             {
-                this.Size = new Size(618, 570);
+                this.Size = new Size(617, 540);
 
-                pnlDetail.Location = new Point(3, 285);
-                pnlDetail.Size = new Size(600, 319);
-                txtbxRemarks.Size = new Size(594, 120);
+                pnlDetail.Location = new Point(0, 282);
+                pnlDetail.Size = new Size(601, 319);
+                txtbxRemarks.Size = new Size(596, 95);
 
-                pictureBox1.Location = new Point(4, 125);
-                pictureBox2.Location = new Point(384, 125);
+                pictureBox1.Location = new Point(46, 100);
+                pictureBox2.Location = new Point(346, 100);
                 // numericUpDown1.Location = new Point(567, 3);
 
                 // btnAltitude.Location = new Point(259, 199);
@@ -612,6 +698,8 @@ namespace Flowcort
 
                 if (evnt || subSection)
                 {
+                    row.DefaultCellStyle.ForeColor = SystemColors.WindowText;
+
                     if (evnt)
                     {
                         row.DefaultCellStyle.BackColor = Color.PapayaWhip;
@@ -660,6 +748,9 @@ namespace Flowcort
             {
                 dgvr.Cells["Done"].Value = false;
             }
+
+            itemBindingSource1.EndEdit();
+            itemTableAdapter1.Update(fSXSE_A321_TutorialDataSet.Item);
 
             if (itemDataGridView1.Rows.Count > 0)
             {

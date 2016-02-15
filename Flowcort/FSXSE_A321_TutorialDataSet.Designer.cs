@@ -371,8 +371,6 @@ namespace Flowcort {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ItemDataTable : global::System.Data.TypedTableBase<ItemRow> {
             
-            private global::System.Data.DataColumn columnItemID;
-            
             private global::System.Data.DataColumn columnSectionID;
             
             private global::System.Data.DataColumn columnLocation;
@@ -409,6 +407,8 @@ namespace Flowcort {
             
             private global::System.Data.DataColumn columnDone;
             
+            private global::System.Data.DataColumn columnItemID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemDataTable() {
@@ -440,14 +440,6 @@ namespace Flowcort {
             protected ItemDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ItemIDColumn {
-                get {
-                    return this.columnItemID;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -596,6 +588,14 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ItemIDColumn {
+                get {
+                    return this.columnItemID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -649,10 +649,10 @@ namespace Flowcort {
                         bool Event, 
                         bool Subsection, 
                         string ValToSet, 
-                        bool Done) {
+                        bool Done, 
+                        long ItemID) {
                 ItemRow rowItemRow = ((ItemRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         null,
                         Location,
                         Area,
@@ -670,9 +670,10 @@ namespace Flowcort {
                         Event,
                         Subsection,
                         ValToSet,
-                        Done};
+                        Done,
+                        ItemID};
                 if ((parentSectionRowByFK_Item_0_0 != null)) {
-                    columnValuesArray[1] = parentSectionRowByFK_Item_0_0[0];
+                    columnValuesArray[0] = parentSectionRowByFK_Item_0_0[0];
                 }
                 rowItemRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowItemRow);
@@ -681,7 +682,7 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemRow FindByItemID(int ItemID) {
+            public ItemRow FindByItemID(long ItemID) {
                 return ((ItemRow)(this.Rows.Find(new object[] {
                             ItemID})));
             }
@@ -703,7 +704,6 @@ namespace Flowcort {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnItemID = base.Columns["ItemID"];
                 this.columnSectionID = base.Columns["SectionID"];
                 this.columnLocation = base.Columns["Location"];
                 this.columnArea = base.Columns["Area"];
@@ -722,13 +722,12 @@ namespace Flowcort {
                 this.columnSubsection = base.Columns["Subsection"];
                 this.columnValToSet = base.Columns["ValToSet"];
                 this.columnDone = base.Columns["Done"];
+                this.columnItemID = base.Columns["ItemID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnItemID = new global::System.Data.DataColumn("ItemID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnItemID);
                 this.columnSectionID = new global::System.Data.DataColumn("SectionID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSectionID);
                 this.columnLocation = new global::System.Data.DataColumn("Location", typeof(string), null, global::System.Data.MappingType.Element);
@@ -765,13 +764,10 @@ namespace Flowcort {
                 base.Columns.Add(this.columnValToSet);
                 this.columnDone = new global::System.Data.DataColumn("Done", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDone);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                this.columnItemID = new global::System.Data.DataColumn("ItemID", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
                                 this.columnItemID}, true));
-                this.columnItemID.AutoIncrement = true;
-                this.columnItemID.AutoIncrementSeed = -1;
-                this.columnItemID.AutoIncrementStep = -1;
-                this.columnItemID.AllowDBNull = false;
-                this.columnItemID.Unique = true;
                 this.columnSectionID.AllowDBNull = false;
                 this.columnLocation.MaxLength = 50;
                 this.columnArea.MaxLength = 50;
@@ -794,6 +790,8 @@ namespace Flowcort {
                 this.columnSubsection.DefaultValue = ((bool)(false));
                 this.columnValToSet.MaxLength = 50;
                 this.columnDone.AllowDBNull = false;
+                this.columnItemID.AllowDBNull = false;
+                this.columnItemID.Unique = true;
                 this.ExtendedProperties.Add("Generator_RowClassName", "ItemRow");
                 this.ExtendedProperties.Add("Generator_RowEvArgName", "ItemRowChangeEvent");
                 this.ExtendedProperties.Add("Generator_RowEvHandlerName", "ItemRowChangeEventHandler");
@@ -1546,17 +1544,6 @@ namespace Flowcort {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ItemID {
-                get {
-                    return ((int)(this[this.tableItem.ItemIDColumn]));
-                }
-                set {
-                    this[this.tableItem.ItemIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int SectionID {
                 get {
                     return ((int)(this[this.tableItem.SectionIDColumn]));
@@ -1805,6 +1792,17 @@ namespace Flowcort {
                 }
                 set {
                     this[this.tableItem.DoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long ItemID {
+                get {
+                    return ((long)(this[this.tableItem.ItemIDColumn]));
+                }
+                set {
+                    this[this.tableItem.ItemIDColumn] = value;
                 }
             }
             
@@ -2371,6 +2369,7 @@ namespace Flowcort.FSXSE_A321_TutorialDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Subsection", "Subsection");
             tableMapping.ColumnMappings.Add("ValToSet", "ValToSet");
             tableMapping.ColumnMappings.Add("Done", "Done");
+            tableMapping.ColumnMappings.Add("ItemID", "ItemID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -3045,9 +3044,9 @@ namespace Flowcort.FSXSE_A321_TutorialDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT SectionID, Position, Location, Area, Part, [Action], ValToSet, CoP, Turnar" +
-                "ound, Event, Subsection, Done, Image1, Image2, Image3, Audio, Video, Remarks FRO" +
-                "M Item ORDER BY Position";
+            this._commandCollection[0].CommandText = "SELECT ItemID, SectionID, Position, Location, Area, Part, [Action], ValToSet, CoP" +
+                ", Turnaround, Event, Subsection, Done, Image1, Image2, Image3, Audio, Video, Rem" +
+                "arks FROM Item ORDER BY Position";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
