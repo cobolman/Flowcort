@@ -45,6 +45,26 @@
             this.pctrbxTransparency = new System.Windows.Forms.PictureBox();
             this.buttonBar1 = new ButtonBar.ButtonBar();
             this.itemDataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SectionID1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValToSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Event = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Subsection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Done = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sectionBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.FlowcortDataSet = new Flowcort.FlowcortDataSet();
@@ -53,29 +73,11 @@
             this.txtbxRemarks = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.imglstTransparency = new System.Windows.Forms.ImageList(this.components);
             this.sectionTableAdapter1 = new Flowcort.FlowcortDataSetTableAdapters.SectionTableAdapter();
             this.tableAdapterManager1 = new Flowcort.FlowcortDataSetTableAdapters.TableAdapterManager();
             this.itemTableAdapter1 = new Flowcort.FlowcortDataSetTableAdapters.ItemTableAdapter();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.imglstTransparency = new System.Windows.Forms.ImageList(this.components);
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValToSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Event = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Subsection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Done = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1.SuspendLayout();
             this.pnlGrid.SuspendLayout();
             this.flwButtonPanel.SuspendLayout();
@@ -248,18 +250,20 @@
             this.itemDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.itemDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn10,
+            this.ItemID,
+            this.SectionID1,
             this.Position,
+            this.ValToSet,
+            this.Event,
+            this.Subsection,
+            this.Done,
+            this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15,
-            this.ValToSet,
             this.dataGridViewCheckBoxColumn3,
             this.dataGridViewCheckBoxColumn4,
-            this.Event,
-            this.Subsection,
-            this.Done,
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn17,
             this.dataGridViewTextBoxColumn18,
@@ -289,6 +293,168 @@
             this.itemDataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemDataGridView1_DataBindingComplete);
             this.itemDataGridView1.SelectionChanged += new System.EventHandler(this.itemDataGridView1_SelectionChanged);
             this.itemDataGridView1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.itemDataGridView1_MouseMove);
+            // 
+            // ItemID
+            // 
+            this.ItemID.DataPropertyName = "ItemID";
+            this.ItemID.HeaderText = "ItemID";
+            this.ItemID.Name = "ItemID";
+            this.ItemID.ReadOnly = true;
+            this.ItemID.Visible = false;
+            // 
+            // SectionID1
+            // 
+            this.SectionID1.DataPropertyName = "SectionID1";
+            this.SectionID1.HeaderText = "SectionID";
+            this.SectionID1.Name = "SectionID1";
+            this.SectionID1.ReadOnly = true;
+            this.SectionID1.Visible = false;
+            // 
+            // Position
+            // 
+            this.Position.DataPropertyName = "Position";
+            this.Position.HeaderText = "Position";
+            this.Position.Name = "Position";
+            this.Position.ReadOnly = true;
+            // 
+            // ValToSet
+            // 
+            this.ValToSet.DataPropertyName = "ValToSet";
+            this.ValToSet.HeaderText = "Value";
+            this.ValToSet.Name = "ValToSet";
+            this.ValToSet.ReadOnly = true;
+            // 
+            // Event
+            // 
+            this.Event.DataPropertyName = "Event";
+            this.Event.HeaderText = "Event";
+            this.Event.Name = "Event";
+            this.Event.ReadOnly = true;
+            this.Event.Visible = false;
+            // 
+            // Subsection
+            // 
+            this.Subsection.DataPropertyName = "Subsection";
+            this.Subsection.HeaderText = "Subsection";
+            this.Subsection.Name = "Subsection";
+            this.Subsection.ReadOnly = true;
+            this.Subsection.Visible = false;
+            // 
+            // Done
+            // 
+            this.Done.DataPropertyName = "Done";
+            this.Done.HeaderText = "Done";
+            this.Done.Name = "Done";
+            this.Done.ReadOnly = true;
+            this.Done.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "ItemID";
+            this.dataGridViewTextBoxColumn10.HeaderText = "ItemID";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "Location";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Location";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.dataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn12.Width = 126;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "Area";
+            this.dataGridViewTextBoxColumn13.HeaderText = "Area";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataGridViewTextBoxColumn13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn13.Width = 191;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "Part";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Part";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn14.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "Action";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Action";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            this.dataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn15.Width = 60;
+            // 
+            // dataGridViewCheckBoxColumn3
+            // 
+            this.dataGridViewCheckBoxColumn3.DataPropertyName = "CoP";
+            this.dataGridViewCheckBoxColumn3.HeaderText = "CoP";
+            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
+            this.dataGridViewCheckBoxColumn3.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn3.Visible = false;
+            // 
+            // dataGridViewCheckBoxColumn4
+            // 
+            this.dataGridViewCheckBoxColumn4.DataPropertyName = "Turnaround";
+            this.dataGridViewCheckBoxColumn4.HeaderText = "Turnaround";
+            this.dataGridViewCheckBoxColumn4.Name = "dataGridViewCheckBoxColumn4";
+            this.dataGridViewCheckBoxColumn4.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn4.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "Image1";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Image1";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dataGridViewTextBoxColumn16.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "Image2";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Image2";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            this.dataGridViewTextBoxColumn17.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "Image3";
+            this.dataGridViewTextBoxColumn18.HeaderText = "Image3";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            this.dataGridViewTextBoxColumn18.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "Audio";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Audio";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            this.dataGridViewTextBoxColumn19.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "Video";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Video";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            this.dataGridViewTextBoxColumn20.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "Remarks";
+            this.dataGridViewTextBoxColumn21.HeaderText = "Remarks";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.ReadOnly = true;
+            this.dataGridViewTextBoxColumn21.Visible = false;
             // 
             // itemBindingSource1
             // 
@@ -371,6 +537,19 @@
             this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             // 
+            // imglstTransparency
+            // 
+            this.imglstTransparency.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglstTransparency.ImageStream")));
+            this.imglstTransparency.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglstTransparency.Images.SetKeyName(0, "rotate0.png");
+            this.imglstTransparency.Images.SetKeyName(1, "rotate1.png");
+            this.imglstTransparency.Images.SetKeyName(2, "rotate2.png");
+            this.imglstTransparency.Images.SetKeyName(3, "rotate3.png");
+            this.imglstTransparency.Images.SetKeyName(4, "rotate4.png");
+            this.imglstTransparency.Images.SetKeyName(5, "rotate5.png");
+            this.imglstTransparency.Images.SetKeyName(6, "rotate6.png");
+            this.imglstTransparency.Images.SetKeyName(7, "rotate7.png");
+            // 
             // sectionTableAdapter1
             // 
             this.sectionTableAdapter1.ClearBeforeFill = true;
@@ -386,165 +565,6 @@
             // itemTableAdapter1
             // 
             this.itemTableAdapter1.ClearBeforeFill = true;
-            // 
-            // imglstTransparency
-            // 
-            this.imglstTransparency.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglstTransparency.ImageStream")));
-            this.imglstTransparency.TransparentColor = System.Drawing.Color.Transparent;
-            this.imglstTransparency.Images.SetKeyName(0, "rotate0.png");
-            this.imglstTransparency.Images.SetKeyName(1, "rotate1.png");
-            this.imglstTransparency.Images.SetKeyName(2, "rotate2.png");
-            this.imglstTransparency.Images.SetKeyName(3, "rotate3.png");
-            this.imglstTransparency.Images.SetKeyName(4, "rotate4.png");
-            this.imglstTransparency.Images.SetKeyName(5, "rotate5.png");
-            this.imglstTransparency.Images.SetKeyName(6, "rotate6.png");
-            this.imglstTransparency.Images.SetKeyName(7, "rotate7.png");
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "ItemID";
-            this.dataGridViewTextBoxColumn10.HeaderText = "ItemID";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Visible = false;
-            // 
-            // Position
-            // 
-            this.Position.DataPropertyName = "Position";
-            this.Position.HeaderText = "Position";
-            this.Position.Name = "Position";
-            this.Position.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "Location";
-            this.dataGridViewTextBoxColumn12.HeaderText = "Location";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn12.Width = 126;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "Area";
-            this.dataGridViewTextBoxColumn13.HeaderText = "Area";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn13.Width = 191;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "Part";
-            this.dataGridViewTextBoxColumn14.HeaderText = "Part";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn14.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "Action";
-            this.dataGridViewTextBoxColumn15.HeaderText = "Action";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            this.dataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn15.Width = 60;
-            // 
-            // ValToSet
-            // 
-            this.ValToSet.DataPropertyName = "ValToSet";
-            this.ValToSet.HeaderText = "Value";
-            this.ValToSet.Name = "ValToSet";
-            this.ValToSet.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn3
-            // 
-            this.dataGridViewCheckBoxColumn3.DataPropertyName = "CoP";
-            this.dataGridViewCheckBoxColumn3.HeaderText = "CoP";
-            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
-            this.dataGridViewCheckBoxColumn3.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn3.Visible = false;
-            // 
-            // dataGridViewCheckBoxColumn4
-            // 
-            this.dataGridViewCheckBoxColumn4.DataPropertyName = "Turnaround";
-            this.dataGridViewCheckBoxColumn4.HeaderText = "Turnaround";
-            this.dataGridViewCheckBoxColumn4.Name = "dataGridViewCheckBoxColumn4";
-            this.dataGridViewCheckBoxColumn4.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn4.Visible = false;
-            // 
-            // Event
-            // 
-            this.Event.DataPropertyName = "Event";
-            this.Event.HeaderText = "Event";
-            this.Event.Name = "Event";
-            this.Event.ReadOnly = true;
-            this.Event.Visible = false;
-            // 
-            // Subsection
-            // 
-            this.Subsection.DataPropertyName = "Subsection";
-            this.Subsection.HeaderText = "Subsection";
-            this.Subsection.Name = "Subsection";
-            this.Subsection.ReadOnly = true;
-            this.Subsection.Visible = false;
-            // 
-            // Done
-            // 
-            this.Done.DataPropertyName = "Done";
-            this.Done.HeaderText = "Done";
-            this.Done.Name = "Done";
-            this.Done.ReadOnly = true;
-            this.Done.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "Image1";
-            this.dataGridViewTextBoxColumn16.HeaderText = "Image1";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "Image2";
-            this.dataGridViewTextBoxColumn17.HeaderText = "Image2";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            this.dataGridViewTextBoxColumn17.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "Image3";
-            this.dataGridViewTextBoxColumn18.HeaderText = "Image3";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            this.dataGridViewTextBoxColumn18.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "Audio";
-            this.dataGridViewTextBoxColumn19.HeaderText = "Audio";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            this.dataGridViewTextBoxColumn19.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "Video";
-            this.dataGridViewTextBoxColumn20.HeaderText = "Video";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            this.dataGridViewTextBoxColumn20.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "Remarks";
-            this.dataGridViewTextBoxColumn21.HeaderText = "Remarks";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
-            this.dataGridViewTextBoxColumn21.Visible = false;
             // 
             // Form2
             // 
@@ -563,6 +583,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
+            this.Shown += new System.EventHandler(this.Form2_Shown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyUp);
             this.contextMenuStrip1.ResumeLayout(false);
             this.pnlGrid.ResumeLayout(false);
@@ -611,18 +632,20 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pctrbxRemarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SectionID1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Position;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValToSet;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Event;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Subsection;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Done;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValToSet;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn4;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Event;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Subsection;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Done;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;

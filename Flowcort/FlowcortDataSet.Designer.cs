@@ -2995,8 +2995,16 @@ namespace Flowcort.FlowcortDataSetTableAdapters {
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
+            try
+            {
+                int returnValue = this.Adapter.Fill(dataTable);
+                return returnValue;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("DKD Exception : " + ex.Message);
+                return 0;
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3834,8 +3842,16 @@ namespace Flowcort.FlowcortDataSetTableAdapters {
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
+            try
+            {
+                int returnValue = this.Adapter.Fill(dataTable);
+                return returnValue;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("DKD Exception : " + ex.Message);
+                return 0;
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

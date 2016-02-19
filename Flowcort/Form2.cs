@@ -24,6 +24,8 @@ namespace Flowcort
         Bitmap Flowcort208x117BW;
         Bitmap Flowcort208x117C;
 
+        public string ConnectionString = @"data source=|DataDirectory|FlowcortData.fct";
+
         // User-defined win32 event
         const int WM_USER_SIMCONNECT = 0x0402;
 
@@ -126,33 +128,29 @@ namespace Flowcort
             Flowcort208x117BW = Flowcort.Properties.Resources.Flowcort208x117BW;
             Flowcort208x117C = Flowcort.Properties.Resources.Flowcort208x117C;
             pictureBox1.Image = Flowcort208x117BW;
+        }
 
-            this.sectionTableAdapter1.Fill(this.FlowcortDataSet.Section);
-            this.itemTableAdapter1.Fill(this.FlowcortDataSet.Item);
-
-            // Populate button bar with section names
-            using (DataTableReader dtrdr = FlowcortDataSet.Section.CreateDataReader())
+        private void ReturnMeToMyLastLocation()
+        {
+            if (ConfigurationManager.AppSettings["CurLocn"] != null && ConfigurationManager.AppSettings["CurSection"] != null)
             {
-                while (dtrdr.Read())
+                int rowIndex = -1;
+                Button btn = findSectionButtonByText(ConfigurationManager.AppSettings["CurSection"].ToString());
+                MoveToSection(btn);
+
+                foreach (DataGridViewRow row in itemDataGridView1.Rows)
                 {
-                    string desc = dtrdr["Description"].ToString();
-                    buttonBar1.Add(desc);
+                    if (row.Cells["ItemID"].Value.ToString().Equals(ConfigurationManager.AppSettings["CurLocn"].ToString()))
+                    {
+                        rowIndex = row.Index;
+                        break;
+                    }
                 }
-            }
 
-            // Mark first button as selected
-            if (buttonBar1.Count > 0)
-                setSelectedSectionButton(buttonBar1.GetButton(0));
-
-            itemDataGridView1.ScrollBars = ScrollBars.None;
-            this.TopMost = true;
-
-            if (ConfigurationManager.AppSettings["Col0"] != null)
-            {
-                for (int n = 0; n < itemDataGridView1.ColumnCount - 1; n++)
+                if (rowIndex != -1)
                 {
-                    string width = ReadAppSetting("Col" + n.ToString());
-                    itemDataGridView1.Columns[n].Width = int.Parse(width);
+                    itemDataGridView1.Rows[rowIndex].Selected = true;
+                    MoveSelectedRowToMiddleOfGrid();
                 }
             }
         }
@@ -381,6 +379,15 @@ namespace Flowcort
             {
                 AddUpdateAppSettings("Col" + n.ToString(), itemDataGridView1.Columns[n].Width.ToString());
             }
+
+            AddUpdateAppSettings("CurLocn", GetCurrentLocation());
+            AddUpdateAppSettings("CurSection", getSelectedSectionText());
+        }
+
+        private string GetCurrentLocation()
+        {
+            DataGridViewRow dgvr = itemDataGridView1.CurrentRow;
+            return dgvr.Cells["ItemID"].Value.ToString();
         }
 
         static void AddUpdateAppSettings(string key, string value)
@@ -471,14 +478,19 @@ namespace Flowcort
                     }
                 }
 
-                int x = itemDataGridView1.SelectedRows[0].Index;
-                int middle = itemDataGridView1.DisplayedRowCount(false) / 2;
-
-                itemDataGridView1.CurrentCell = itemDataGridView1.SelectedRows[0].Cells[2];
-
-                if (x > middle)
-                    itemDataGridView1.FirstDisplayedScrollingRowIndex = x - middle;
+                MoveSelectedRowToMiddleOfGrid();
             }
+        }
+
+        private void MoveSelectedRowToMiddleOfGrid()
+        {
+            int x = itemDataGridView1.SelectedRows[0].Index;
+            int middle = itemDataGridView1.DisplayedRowCount(false) / 2;
+
+            itemDataGridView1.CurrentCell = itemDataGridView1.SelectedRows[0].Cells[2];
+
+            if (x > middle)
+                itemDataGridView1.FirstDisplayedScrollingRowIndex = x - middle;
         }
 
         private void btnConnectToggle_Click(object sender, EventArgs e)
@@ -613,6 +625,22 @@ namespace Flowcort
                     btn.ForeColor = System.Drawing.SystemColors.HighlightText;
                 }
             }
+        }
+
+        private string getSelectedSectionText()
+        {
+            string result = "No selected section found";
+
+            for (int i = 0; i < buttonBar1.Buttons.Count; i++)
+            {
+                Button btn = buttonBar1.Buttons[i];
+                if (btn.BackColor == System.Drawing.SystemColors.Highlight)
+                {
+                    result = btn.Text;
+                }
+            }
+
+            return result;
         }
 
         private void resetSectionButtons()
@@ -769,7 +797,7 @@ namespace Flowcort
 
         private void btnResetList_Click(object sender, EventArgs e)
         {
-            using (SQLiteConnection con = new SQLiteConnection("data source=|DataDirectory|\\FSXSE_A321_Tutorial"))
+            using (SQLiteConnection con = new SQLiteConnection(ConnectionString))
             {
                 SQLiteCommand sqlcmd = con.CreateCommand();
                 sqlcmd.CommandText = "UPDATE Item SET Done = 0";
@@ -832,6 +860,44 @@ namespace Flowcort
         {
             if (pictureBox1.Image == Flowcort208x117C)
                 pictureBox1.Image = Flowcort208x117BW;
+        }
+
+        private void Form2_Shown(object sender, EventArgs e)
+        {
+            // todo this is where I do the connectionstring and fill
+            sectionTableAdapter1.Connection.ConnectionString = ConnectionString;
+            itemTableAdapter1.Connection.ConnectionString = ConnectionString;
+
+            this.sectionTableAdapter1.Fill(this.FlowcortDataSet.Section);
+            this.itemTableAdapter1.Fill(this.FlowcortDataSet.Item);
+
+            // Populate button bar with section names
+            using (DataTableReader dtrdr = FlowcortDataSet.Section.CreateDataReader())
+            {
+                while (dtrdr.Read())
+                {
+                    string desc = dtrdr["Description"].ToString();
+                    buttonBar1.Add(desc);
+                }
+            }
+
+            // Mark first button as selected
+            if (buttonBar1.Count > 0)
+                setSelectedSectionButton(buttonBar1.GetButton(0));
+
+            itemDataGridView1.ScrollBars = ScrollBars.None;
+            this.TopMost = true;
+
+            if (ConfigurationManager.AppSettings["Col0"] != null)
+            {
+                for (int n = 0; n < itemDataGridView1.ColumnCount - 1; n++)
+                {
+                    string width = ReadAppSetting("Col" + n.ToString());
+                    itemDataGridView1.Columns[n].Width = int.Parse(width);
+                }
+            }
+
+            ReturnMeToMyLastLocation();
         }
 
     }
