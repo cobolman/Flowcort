@@ -150,9 +150,6 @@
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Flowcort_TemporaryKey.pfx" />
-    <None Include="FSXSE_A321_Tutorial">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="FlowcortDataSet.xsc">
       <DependentUpon>FlowcortDataSet.xsd</DependentUpon>
     </None>
@@ -164,6 +161,7 @@
     <None Include="FlowcortDataSet.xss">
       <DependentUpon>FlowcortDataSet.xsd</DependentUpon>
     </None>
+    <None Include="FSXSE_A321_Tutorial.fct" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
