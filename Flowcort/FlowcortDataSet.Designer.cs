@@ -20,9 +20,9 @@ namespace Flowcort {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("FSXSE_A321_TutorialDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("FlowcortDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class FSXSE_A321_TutorialDataSet : global::System.Data.DataSet {
+    public partial class FlowcortDataSet : global::System.Data.DataSet {
         
         private ItemDataTable tableItem;
         
@@ -38,7 +38,7 @@ namespace Flowcort {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public FSXSE_A321_TutorialDataSet() {
+        public FlowcortDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -49,7 +49,7 @@ namespace Flowcort {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected FSXSE_A321_TutorialDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected FlowcortDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -161,7 +161,7 @@ namespace Flowcort {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            FSXSE_A321_TutorialDataSet cln = ((FSXSE_A321_TutorialDataSet)(base.Clone()));
+            FlowcortDataSet cln = ((FlowcortDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -253,9 +253,9 @@ namespace Flowcort {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "FSXSE_A321_TutorialDataSet";
+            this.DataSetName = "FlowcortDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/FSXSE_A321_TutorialDataSet.xsd";
+            this.Namespace = "http://tempuri.org/FlowcortDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableItem = new ItemDataTable();
@@ -311,7 +311,7 @@ namespace Flowcort {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            FSXSE_A321_TutorialDataSet ds = new FSXSE_A321_TutorialDataSet();
+            FlowcortDataSet ds = new FlowcortDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -866,7 +866,7 @@ namespace Flowcort {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                FSXSE_A321_TutorialDataSet ds = new FSXSE_A321_TutorialDataSet();
+                FlowcortDataSet ds = new FlowcortDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1173,7 +1173,7 @@ namespace Flowcort {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                FSXSE_A321_TutorialDataSet ds = new FSXSE_A321_TutorialDataSet();
+                FlowcortDataSet ds = new FlowcortDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1469,7 +1469,7 @@ namespace Flowcort {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                FSXSE_A321_TutorialDataSet ds = new FSXSE_A321_TutorialDataSet();
+                FlowcortDataSet ds = new FlowcortDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2227,7 +2227,7 @@ namespace Flowcort {
         }
     }
 }
-namespace Flowcort.FSXSE_A321_TutorialDataSetTableAdapters {
+namespace Flowcort.FlowcortDataSetTableAdapters {
     
     
     /// <summary>
@@ -2633,7 +2633,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::Flowcort.Properties.Settings.Default.FSXSE_A321_TutorialConnectionString;
+            this._connection.ConnectionString = global::Flowcort.Properties.Settings.Default.FlowcortConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2652,7 +2652,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(FSXSE_A321_TutorialDataSet.ItemDataTable dataTable) {
+        public virtual int Fill(FlowcortDataSet.ItemDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2665,9 +2665,9 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual FSXSE_A321_TutorialDataSet.ItemDataTable GetData() {
+        public virtual FlowcortDataSet.ItemDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            FSXSE_A321_TutorialDataSet.ItemDataTable dataTable = new FSXSE_A321_TutorialDataSet.ItemDataTable();
+            FlowcortDataSet.ItemDataTable dataTable = new FlowcortDataSet.ItemDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -2675,14 +2675,14 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FSXSE_A321_TutorialDataSet.ItemDataTable dataTable) {
+        public virtual int Update(FlowcortDataSet.ItemDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FSXSE_A321_TutorialDataSet dataSet) {
+        public virtual int Update(FlowcortDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Item");
         }
         
@@ -2975,7 +2975,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::Flowcort.Properties.Settings.Default.FSXSE_A321_TutorialConnectionString;
+            this._connection.ConnectionString = global::Flowcort.Properties.Settings.Default.FlowcortConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2992,7 +2992,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(FSXSE_A321_TutorialDataSet.ListDataTable dataTable) {
+        public virtual int Fill(FlowcortDataSet.ListDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3005,9 +3005,9 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual FSXSE_A321_TutorialDataSet.ListDataTable GetData() {
+        public virtual FlowcortDataSet.ListDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            FSXSE_A321_TutorialDataSet.ListDataTable dataTable = new FSXSE_A321_TutorialDataSet.ListDataTable();
+            FlowcortDataSet.ListDataTable dataTable = new FlowcortDataSet.ListDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3015,14 +3015,14 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FSXSE_A321_TutorialDataSet.ListDataTable dataTable) {
+        public virtual int Update(FlowcortDataSet.ListDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FSXSE_A321_TutorialDataSet dataSet) {
+        public virtual int Update(FlowcortDataSet dataSet) {
             return this.Adapter.Update(dataSet, "List");
         }
         
@@ -3416,7 +3416,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::Flowcort.Properties.Settings.Default.FSXSE_A321_TutorialConnectionString;
+            this._connection.ConnectionString = global::Flowcort.Properties.Settings.Default.FlowcortConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3433,7 +3433,7 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(FSXSE_A321_TutorialDataSet.SectionDataTable dataTable) {
+        public virtual int Fill(FlowcortDataSet.SectionDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3446,9 +3446,9 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual FSXSE_A321_TutorialDataSet.SectionDataTable GetData() {
+        public virtual FlowcortDataSet.SectionDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            FSXSE_A321_TutorialDataSet.SectionDataTable dataTable = new FSXSE_A321_TutorialDataSet.SectionDataTable();
+            FlowcortDataSet.SectionDataTable dataTable = new FlowcortDataSet.SectionDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3456,14 +3456,14 @@ WHERE        (ItemID = @Original_ItemID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FSXSE_A321_TutorialDataSet.SectionDataTable dataTable) {
+        public virtual int Update(FlowcortDataSet.SectionDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FSXSE_A321_TutorialDataSet dataSet) {
+        public virtual int Update(FlowcortDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Section");
         }
         
@@ -3722,7 +3722,7 @@ WHERE        (ItemID = @Original_ItemID)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(FSXSE_A321_TutorialDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(FlowcortDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._listTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.List.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -3759,7 +3759,7 @@ WHERE        (ItemID = @Original_ItemID)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(FSXSE_A321_TutorialDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(FlowcortDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._listTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.List.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -3793,7 +3793,7 @@ WHERE        (ItemID = @Original_ItemID)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(FSXSE_A321_TutorialDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(FlowcortDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._itemTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -3851,7 +3851,7 @@ WHERE        (ItemID = @Original_ItemID)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(FSXSE_A321_TutorialDataSet dataSet) {
+        public virtual int UpdateAll(FlowcortDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

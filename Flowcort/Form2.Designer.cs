@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,15 +65,15 @@
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sectionBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.fSXSE_A321_TutorialDataSet = new Flowcort.FSXSE_A321_TutorialDataSet();
+            this.FlowcortDataSet = new Flowcort.FlowcortDataSet();
             this.pnlDetail = new System.Windows.Forms.Panel();
             this.pctrbxRemarks = new System.Windows.Forms.PictureBox();
             this.txtbxRemarks = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.sectionTableAdapter1 = new Flowcort.FSXSE_A321_TutorialDataSetTableAdapters.SectionTableAdapter();
-            this.tableAdapterManager1 = new Flowcort.FSXSE_A321_TutorialDataSetTableAdapters.TableAdapterManager();
-            this.itemTableAdapter1 = new Flowcort.FSXSE_A321_TutorialDataSetTableAdapters.ItemTableAdapter();
+            this.sectionTableAdapter1 = new Flowcort.FlowcortDataSetTableAdapters.SectionTableAdapter();
+            this.tableAdapterManager1 = new Flowcort.FlowcortDataSetTableAdapters.TableAdapterManager();
+            this.itemTableAdapter1 = new Flowcort.FlowcortDataSetTableAdapters.ItemTableAdapter();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.imglstTransparency = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1.SuspendLayout();
@@ -84,7 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sectionBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fSXSE_A321_TutorialDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FlowcortDataSet)).BeginInit();
             this.pnlDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxRemarks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -238,14 +238,14 @@
             this.itemDataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.itemDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.itemDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.itemDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn10,
@@ -267,14 +267,14 @@
             this.dataGridViewTextBoxColumn20,
             this.dataGridViewTextBoxColumn21});
             this.itemDataGridView1.DataSource = this.itemBindingSource1;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemDataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemDataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.itemDataGridView1.EnableHeadersVisualStyles = false;
             this.itemDataGridView1.Location = new System.Drawing.Point(2, 44);
             this.itemDataGridView1.MultiSelect = false;
@@ -446,13 +446,13 @@
             // sectionBindingSource1
             // 
             this.sectionBindingSource1.DataMember = "Section";
-            this.sectionBindingSource1.DataSource = this.fSXSE_A321_TutorialDataSet;
+            this.sectionBindingSource1.DataSource = this.FlowcortDataSet;
             this.sectionBindingSource1.PositionChanged += new System.EventHandler(this.sectionBindingSource1_PositionChanged);
             // 
-            // fSXSE_A321_TutorialDataSet
+            // FlowcortDataSet
             // 
-            this.fSXSE_A321_TutorialDataSet.DataSetName = "FSXSE_A321_TutorialDataSet";
-            this.fSXSE_A321_TutorialDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.FlowcortDataSet.DataSetName = "FlowcortDataSet";
+            this.FlowcortDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // pnlDetail
             // 
@@ -528,7 +528,7 @@
             this.tableAdapterManager1.ItemTableAdapter = this.itemTableAdapter1;
             this.tableAdapterManager1.ListTableAdapter = null;
             this.tableAdapterManager1.SectionTableAdapter = this.sectionTableAdapter1;
-            this.tableAdapterManager1.UpdateOrder = Flowcort.FSXSE_A321_TutorialDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager1.UpdateOrder = Flowcort.FlowcortDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // itemTableAdapter1
             // 
@@ -573,7 +573,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sectionBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fSXSE_A321_TutorialDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FlowcortDataSet)).EndInit();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxRemarks)).EndInit();
@@ -590,11 +590,11 @@
         private System.Windows.Forms.Panel pnlDetail;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private FSXSE_A321_TutorialDataSet fSXSE_A321_TutorialDataSet;
+        private FlowcortDataSet FlowcortDataSet;
         private System.Windows.Forms.BindingSource sectionBindingSource1;
-        private FSXSE_A321_TutorialDataSetTableAdapters.SectionTableAdapter sectionTableAdapter1;
-        private FSXSE_A321_TutorialDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
-        private FSXSE_A321_TutorialDataSetTableAdapters.ItemTableAdapter itemTableAdapter1;
+        private FlowcortDataSetTableAdapters.SectionTableAdapter sectionTableAdapter1;
+        private FlowcortDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
+        private FlowcortDataSetTableAdapters.ItemTableAdapter itemTableAdapter1;
         private System.Windows.Forms.BindingSource itemBindingSource1;
         private System.Windows.Forms.DataGridView itemDataGridView1;
         private System.Windows.Forms.TextBox txtbxRemarks;

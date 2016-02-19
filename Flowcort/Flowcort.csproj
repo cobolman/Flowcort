@@ -116,10 +116,14 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="FSXSE_A321_TutorialDataSet.Designer.cs">
+    <Compile Include="FlowcortDataSet.cs">
+      <DependentUpon>FlowcortDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlowcortDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FSXSE_A321_TutorialDataSet.xsd</DependentUpon>
+      <DependentUpon>FlowcortDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,16 +153,16 @@
     <None Include="FSXSE_A321_Tutorial">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="FSXSE_A321_TutorialDataSet.xsc">
-      <DependentUpon>FSXSE_A321_TutorialDataSet.xsd</DependentUpon>
+    <None Include="FlowcortDataSet.xsc">
+      <DependentUpon>FlowcortDataSet.xsd</DependentUpon>
     </None>
-    <None Include="FSXSE_A321_TutorialDataSet.xsd">
+    <None Include="FlowcortDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>FSXSE_A321_TutorialDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>FlowcortDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="FSXSE_A321_TutorialDataSet.xss">
-      <DependentUpon>FSXSE_A321_TutorialDataSet.xsd</DependentUpon>
+    <None Include="FlowcortDataSet.xss">
+      <DependentUpon>FlowcortDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>

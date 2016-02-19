@@ -127,11 +127,11 @@ namespace Flowcort
             Flowcort208x117C = Flowcort.Properties.Resources.Flowcort208x117C;
             pictureBox1.Image = Flowcort208x117BW;
 
-            this.sectionTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Section);
-            this.itemTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Item);
+            this.sectionTableAdapter1.Fill(this.FlowcortDataSet.Section);
+            this.itemTableAdapter1.Fill(this.FlowcortDataSet.Item);
 
             // Populate button bar with section names
-            using (DataTableReader dtrdr = fSXSE_A321_TutorialDataSet.Section.CreateDataReader())
+            using (DataTableReader dtrdr = FlowcortDataSet.Section.CreateDataReader())
             {
                 while (dtrdr.Read())
                 {
@@ -186,7 +186,7 @@ namespace Flowcort
                     drv["Done"] = !(bool)drv["Done"];
 
                     itemBindingSource1.EndEdit();
-                    itemTableAdapter1.Update(fSXSE_A321_TutorialDataSet.Item);
+                    itemTableAdapter1.Update(FlowcortDataSet.Item);
 
                     if (allItemsInSectionAreDone())
                         nextSection();
@@ -423,10 +423,10 @@ namespace Flowcort
 
         private void RefreshData()
         {
-            fSXSE_A321_TutorialDataSet.EnforceConstraints = false;
-            this.sectionTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Section);
-            this.itemTableAdapter1.Fill(this.fSXSE_A321_TutorialDataSet.Item);
-            fSXSE_A321_TutorialDataSet.EnforceConstraints = true;
+            FlowcortDataSet.EnforceConstraints = false;
+            this.sectionTableAdapter1.Fill(this.FlowcortDataSet.Section);
+            this.itemTableAdapter1.Fill(this.FlowcortDataSet.Item);
+            FlowcortDataSet.EnforceConstraints = true;
         }
 
         private void itemDataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -755,7 +755,7 @@ namespace Flowcort
             }
 
             itemBindingSource1.EndEdit();
-            itemTableAdapter1.Update(fSXSE_A321_TutorialDataSet.Item);
+            itemTableAdapter1.Update(FlowcortDataSet.Item);
 
             if (itemDataGridView1.Rows.Count > 0)
             {
