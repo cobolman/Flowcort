@@ -135,7 +135,8 @@ namespace Flowcort
             {
                 while (dtrdr.Read())
                 {
-                    buttonBar1.Add(dtrdr.GetString(0));
+                    string desc = dtrdr["Description"].ToString();
+                    buttonBar1.Add(desc);
                 }
             }
 
