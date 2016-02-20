@@ -17,7 +17,19 @@ namespace Flowcort
     {
         // Form Variables
 
-        bool portrait = false;
+        private bool portrait = false;
+        private bool _pinned = false;
+
+        public bool Pinned { 
+            get { return _pinned; } 
+            set { 
+                _pinned = value; 
+                btnPin.Image = _pinned ? Flowcort.Properties.Resources.Pinned : Flowcort.Properties.Resources.Pin;
+                btnPortraitOrLandscape.Enabled = !_pinned;
+                SetFormSize();
+            } 
+        }
+
         Bitmap FlowcortYouTubeBW;
         Bitmap FlowcortYouTubeC;
 
@@ -487,7 +499,7 @@ namespace Flowcort
             int x = itemDataGridView1.SelectedRows[0].Index;
             int middle = itemDataGridView1.DisplayedRowCount(false) / 2;
 
-            itemDataGridView1.CurrentCell = itemDataGridView1.SelectedRows[0].Cells[2];
+            itemDataGridView1.CurrentCell = itemDataGridView1.SelectedRows[0].Cells[3];
 
             if (x > middle)
                 itemDataGridView1.FirstDisplayedScrollingRowIndex = x - middle;
@@ -560,17 +572,6 @@ namespace Flowcort
         {
             if ( fsxConnection != null )
                 fsxConnection.pollFSXData();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //Settings settings = new Settings();
-            //settings.ShowDialog();
-
-            if (listIsPartiallyDone())
-                MessageBox.Show("List partially done");
-            else
-                MessageBox.Show("List is all undone or done");
         }
 
         private Button findSectionButtonByText(String buttonText)
@@ -675,18 +676,15 @@ namespace Flowcort
         {
             try
             {
-                this.Size = new Size(1011, 322);
-
                 pnlDetail.Location = new Point(600, 3);
                 pnlDetail.Size = new Size(391, 278);
-                txtbxRemarks.Size = new Size(179, 276);
+                txtbxRemarks.Size = new Size(179, 275);
 
                 pictureBox1.Location = new Point(181, 0);
                 pictureBox2.Location = new Point(181, 161);
-                // numericUpDown1.Location = new Point(360, 8);
 
-                // btnAltitude.Location = new Point(58, 276);
                 portrait = false;
+                SetFormSize();
             }
             catch (Exception ex)
             {
@@ -698,18 +696,15 @@ namespace Flowcort
         {
             try
             {
-                this.Size = new Size(617, 540);
-
                 pnlDetail.Location = new Point(0, 282);
                 pnlDetail.Size = new Size(601, 319);
                 txtbxRemarks.Size = new Size(596, 95);
 
                 pictureBox1.Location = new Point(46, 100);
                 pictureBox2.Location = new Point(346, 100);
-                // numericUpDown1.Location = new Point(567, 3);
 
-                // btnAltitude.Location = new Point(259, 199);
                 portrait = true;
+                SetFormSize();
             }
             catch (Exception ex)
             {
@@ -864,14 +859,14 @@ namespace Flowcort
 
         private void Form2_Shown(object sender, EventArgs e)
         {
-            // todo this is where I do the connectionstring and fill
-            sectionTableAdapter1.Connection.ConnectionString = ConnectionString;
-            itemTableAdapter1.Connection.ConnectionString = ConnectionString;
+            GetData();
+            CreateSectionTabs();
+            ApplyUserSettings();
+            ReturnMeToMyLastLocation();
+        }
 
-            this.sectionTableAdapter1.Fill(this.FlowcortDataSet.Section);
-            this.itemTableAdapter1.Fill(this.FlowcortDataSet.Item);
-
-            // Populate button bar with section names
+        private void CreateSectionTabs()
+        {
             using (DataTableReader dtrdr = FlowcortDataSet.Section.CreateDataReader())
             {
                 while (dtrdr.Read())
@@ -887,7 +882,43 @@ namespace Flowcort
 
             itemDataGridView1.ScrollBars = ScrollBars.None;
             this.TopMost = true;
+        }
 
+        private void GetData()
+        {
+            sectionTableAdapter1.Connection.ConnectionString = ConnectionString;
+            itemTableAdapter1.Connection.ConnectionString = ConnectionString;
+
+            this.sectionTableAdapter1.Fill(this.FlowcortDataSet.Section);
+            this.itemTableAdapter1.Fill(this.FlowcortDataSet.Item);
+        }
+
+        private void btnPin_Click(object sender, EventArgs e)
+        {
+            Pinned = !Pinned;
+        }
+
+        private void SetFormSize()
+        {
+            if (Pinned)
+                this.ClientSize = new Size(601, 283);
+            else
+            {
+                if (portrait)
+                    this.ClientSize = new Size(601, 501);
+                else
+                    this.ClientSize = new Size(995, 283);
+            }
+        }
+
+        private void pnlDetail_Click(object sender, EventArgs e)
+        {
+            // todo delete this
+            MessageBox.Show("ClientSize : " + this.ClientSize.ToString());
+        }
+
+        private void ApplyUserSettings()
+        {
             if (ConfigurationManager.AppSettings["Col0"] != null)
             {
                 for (int n = 0; n < itemDataGridView1.ColumnCount - 1; n++)
@@ -896,9 +927,8 @@ namespace Flowcort
                     itemDataGridView1.Columns[n].Width = int.Parse(width);
                 }
             }
-
-            ReturnMeToMyLastLocation();
         }
 
     }
+
 }

@@ -40,6 +40,7 @@
             System.Windows.Forms.Label flowcortVersionLabel;
             System.Windows.Forms.Label typeLabel;
             System.Windows.Forms.Label versionLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListSelector));
             this.flowcortDataDataSet = new Flowcort.FlowcortDataSet();
             this.listBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listTableAdapter = new Flowcort.FlowcortDataSetTableAdapters.ListTableAdapter();
@@ -388,6 +389,7 @@
             this.Controls.Add(this.typeTextBox);
             this.Controls.Add(versionLabel);
             this.Controls.Add(this.versionTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListSelector";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "List Selector";
