@@ -295,14 +295,7 @@ namespace Flowcort
 
         private void ShowHideFlowcort()
         {
-            if (this.Visible)
-            {
-                this.Visible = false;
-            }
-            else
-            {
-                this.Visible = true;
-            }
+            this.Visible = !this.Visible;
         }
 
         private void itemBindingSource_PositionChanged(object sender, EventArgs e)
