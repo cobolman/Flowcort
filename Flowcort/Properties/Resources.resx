@@ -124,26 +124,17 @@
   <data name="Rotate24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Rotate24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PinRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PinRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Remarks" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Remarks3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Add32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Add32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PinUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PinUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="FlowcortYouTubeBW" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\App Icons\FlowcortYouTubeBW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Prior32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Prior32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PinLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PinLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Settings24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -153,9 +144,6 @@
   </data>
   <data name="rotate0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rotate01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PinDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PinDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Delete16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Delete16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

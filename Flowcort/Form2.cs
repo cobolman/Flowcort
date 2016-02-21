@@ -17,7 +17,7 @@ namespace Flowcort
     {
         // Form Variables
 
-        private bool portrait = false;
+        private bool _portrait = false;
         private bool _pinned = false;
 
         public bool Pinned { 
@@ -28,6 +28,11 @@ namespace Flowcort
                 btnPortraitOrLandscape.Enabled = !_pinned;
                 SetFormSize();
             } 
+        }
+
+        public bool Portrait {
+            get { return _portrait; }
+            set { _portrait = value; if (_portrait) SetPortraitMode(); else SetLandscapeMode(); }
         }
 
         Bitmap FlowcortYouTubeBW;
@@ -130,6 +135,9 @@ namespace Flowcort
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            SetFormLook();
+            SetFormLocation();
+
             pctrbxRemarks.Parent = txtbxRemarks;
             pctrbxRemarks.Location = new Point(1, 1);
 
@@ -144,15 +152,18 @@ namespace Flowcort
 
         private void ReturnMeToMyLastLocation()
         {
-            if (ConfigurationManager.AppSettings["CurLocn"] != null && ConfigurationManager.AppSettings["CurSection"] != null)
+            string curLocn = ConnectionString + "CurLocn";
+            string curSection = ConnectionString + "CurSection";
+
+            if (ConfigurationManager.AppSettings[curLocn] != null && ConfigurationManager.AppSettings[curSection] != null)
             {
                 int rowIndex = -1;
-                Button btn = findSectionButtonByText(ConfigurationManager.AppSettings["CurSection"].ToString());
+                Button btn = findSectionButtonByText(ConfigurationManager.AppSettings[curSection].ToString());
                 MoveToSection(btn);
 
                 foreach (DataGridViewRow row in itemDataGridView1.Rows)
                 {
-                    if (row.Cells["ItemID"].Value.ToString().Equals(ConfigurationManager.AppSettings["CurLocn"].ToString()))
+                    if (row.Cells["ItemID"].Value.ToString().Equals(ConfigurationManager.AppSettings[curLocn].ToString()))
                     {
                         rowIndex = row.Index;
                         break;
@@ -387,13 +398,7 @@ namespace Flowcort
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            for (int n = 0; n < itemDataGridView1.ColumnCount - 1; n++)
-            {
-                AddUpdateAppSettings("Col" + n.ToString(), itemDataGridView1.Columns[n].Width.ToString());
-            }
-
-            AddUpdateAppSettings("CurLocn", GetCurrentLocation());
-            AddUpdateAppSettings("CurSection", getSelectedSectionText());
+            SaveUserSettings();
         }
 
         private string GetCurrentLocation()
@@ -402,7 +407,7 @@ namespace Flowcort
             return dgvr.Cells["ItemID"].Value.ToString();
         }
 
-        static void AddUpdateAppSettings(string key, string value)
+        static void AddUpdateAppSetting(string key, string value)
         {
             try
             {
@@ -429,11 +434,6 @@ namespace Flowcort
         {
             var appSettings = ConfigurationManager.AppSettings;
             return appSettings[key] ?? "100";
-        }
-
-        private void dataEntryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void refreshDataToolStripMenuItem_Click(object sender, EventArgs e)
@@ -628,7 +628,7 @@ namespace Flowcort
             }
         }
 
-        private string getSelectedSectionText()
+        private string GetSelectedSectionText()
         {
             string result = "No selected section found";
 
@@ -661,15 +661,7 @@ namespace Flowcort
 
         private void btnLandscapeOrPortrait(object sender, EventArgs e)
         {
-            if (portrait)
-            {
-                SetLandscapeMode();
-                portrait = false;
-            }
-            else
-            {
-                SetPortraitMode();
-            }
+            Portrait = !Portrait;
         }
 
         private void SetLandscapeMode()
@@ -683,7 +675,6 @@ namespace Flowcort
                 pictureBox1.Location = new Point(181, 0);
                 pictureBox2.Location = new Point(181, 161);
 
-                portrait = false;
                 SetFormSize();
             }
             catch (Exception ex)
@@ -703,7 +694,6 @@ namespace Flowcort
                 pictureBox1.Location = new Point(46, 100);
                 pictureBox2.Location = new Point(346, 100);
 
-                portrait = true;
                 SetFormSize();
             }
             catch (Exception ex)
@@ -862,7 +852,6 @@ namespace Flowcort
             GetData();
             CreateSectionTabs();
             ApplyUserSettings();
-            ReturnMeToMyLastLocation();
         }
 
         private void CreateSectionTabs()
@@ -904,17 +893,11 @@ namespace Flowcort
                 this.ClientSize = new Size(601, 283);
             else
             {
-                if (portrait)
+                if (Portrait)
                     this.ClientSize = new Size(601, 501);
                 else
                     this.ClientSize = new Size(995, 283);
             }
-        }
-
-        private void pnlDetail_Click(object sender, EventArgs e)
-        {
-            // todo delete this
-            MessageBox.Show("ClientSize : " + this.ClientSize.ToString());
         }
 
         private void ApplyUserSettings()
@@ -927,6 +910,44 @@ namespace Flowcort
                     itemDataGridView1.Columns[n].Width = int.Parse(width);
                 }
             }
+
+            ReturnMeToMyLastLocation();
+        }
+
+        private void SetFormLook()
+        {
+            if (ReadAppSetting("Portrait") != "100")
+                Portrait = Convert.ToBoolean(ReadAppSetting("Portrait"));
+
+            if (ReadAppSetting("Pinned") != "100")
+                Pinned = Convert.ToBoolean(ReadAppSetting("Pinned"));
+        }
+
+        private void SetFormLocation()
+        {
+            if (ReadAppSetting("FormLocnX") != "100" && ReadAppSetting("FormLocnY") != "100")
+            {
+                int x = Convert.ToInt32(ReadAppSetting("FormLocnX"));
+                int y = Convert.ToInt32(ReadAppSetting("FormLocnY"));
+                this.Location = new Point(x, y);
+            }
+        }
+
+        private void SaveUserSettings()
+        {
+            for (int n = 0; n < itemDataGridView1.ColumnCount - 1; n++)
+            {
+                AddUpdateAppSetting("Col" + n.ToString(), itemDataGridView1.Columns[n].Width.ToString());
+            }
+
+            AddUpdateAppSetting( ConnectionString + "CurLocn", GetCurrentLocation());
+            AddUpdateAppSetting( ConnectionString + "CurSection", GetSelectedSectionText());
+
+            AddUpdateAppSetting("FormLocnX", this.Location.X.ToString());
+            AddUpdateAppSetting("FormLocnY", this.Location.Y.ToString());
+
+            AddUpdateAppSetting("Portrait", Portrait.ToString());
+            AddUpdateAppSetting("Pinned", Pinned.ToString());
         }
 
     }
