@@ -1,21 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Flowcort
 {
     public partial class Form2 : Form
     {
-        // Form Variables
+        private string _DBFile = "FlowcortData";
+        private string _ConnectionString = @"data source=|DataDirectory|FlowcortData.fct";
+        public string ConnectionString
+        {
+            get { return _ConnectionString; }
+            set
+            {
+                _ConnectionString = value;
+                var m = Regex.Match(_ConnectionString, @"(.*\|DataDirectory\|\\*)(.*)(.fct)");
+                _DBFile = m.Groups[2].Value.ToString();
+
+                _ImageFolder = AppDomain.CurrentDomain.BaseDirectory + _DBFile + "\\FullSize";
+                _ThumbnailFolder = AppDomain.CurrentDomain.BaseDirectory + _DBFile + "\\Thumbnail";
+            }
+        }
+
+        private string _ImageFolder;
+        private string _ThumbnailFolder;
 
         private bool _portrait = false;
         private bool _pinned = false;
@@ -24,7 +38,7 @@ namespace Flowcort
             get { return _pinned; } 
             set { 
                 _pinned = value; 
-                btnPin.Image = _pinned ? Flowcort.Properties.Resources.Pinned : Flowcort.Properties.Resources.Pin;
+                btnPin.Image = _pinned ? Properties.Resources.Pinned : Properties.Resources.Pin;
                 btnPortraitOrLandscape.Enabled = !_pinned;
                 SetFormSize();
             } 
@@ -40,8 +54,6 @@ namespace Flowcort
 
         Bitmap Flowcort208x117BW;
         Bitmap Flowcort208x117C;
-
-        public string ConnectionString = @"data source=|DataDirectory|FlowcortData.fct";
 
         // User-defined win32 event
         const int WM_USER_SIMCONNECT = 0x0402;
@@ -129,7 +141,7 @@ namespace Flowcort
             {
                 fsxConnection.closeConnection();
                 fsxConnection = null;
-                btnConnectToggle.Image = Flowcort.Properties.Resources.Disconnected32;
+                btnConnectToggle.Image = Properties.Resources.Disconnected32;
             }
         } 
 
@@ -141,12 +153,12 @@ namespace Flowcort
             pctrbxRemarks.Parent = txtbxRemarks;
             pctrbxRemarks.Location = new Point(1, 1);
 
-            FlowcortYouTubeBW = Flowcort.Properties.Resources.FlowcortYouTubeBW;
-            FlowcortYouTubeC = Flowcort.Properties.Resources.FlowcortYouTubeC;
+            FlowcortYouTubeBW = Properties.Resources.FlowcortYouTubeBW;
+            FlowcortYouTubeC = Properties.Resources.FlowcortYouTubeC;
             pictureBox2.Image = FlowcortYouTubeBW;
 
-            Flowcort208x117BW = Flowcort.Properties.Resources.Flowcort208x117BW;
-            Flowcort208x117C = Flowcort.Properties.Resources.Flowcort208x117C;
+            Flowcort208x117BW = Properties.Resources.Flowcort208x117BW;
+            Flowcort208x117C = Properties.Resources.Flowcort208x117C;
             pictureBox1.Image = Flowcort208x117BW;
         }
 
@@ -232,8 +244,7 @@ namespace Flowcort
 
             foreach (DataGridViewRow row in itemDataGridView1.Rows)
             {
-                if (!(Convert.ToBoolean(row.Cells["Subsection"].Value) == true ||
-                    Convert.ToBoolean(row.Cells["Event"].Value) == true))
+                if (!RowIsEventOrSubsection(row))
                 { 
                     if (Convert.ToBoolean(row.Cells["Done"].Value) == false)
                     { 
@@ -242,6 +253,16 @@ namespace Flowcort
                     }
                 }
             }
+
+            return result;
+        }
+
+        private Boolean RowIsEventOrSubsection( DataGridViewRow row )
+        {
+            bool result = false;
+
+            if ( row != null )
+                result = (Convert.ToBoolean(row.Cells["Subsection"].Value) == true || Convert.ToBoolean(row.Cells["Event"].Value) == true);
 
             return result;
         }
@@ -306,11 +327,14 @@ namespace Flowcort
 
             if (itemBindingSource1.Current != null)
             {
-                string img1Locn = ((DataRowView)itemBindingSource1.Current).Row["Image1"].ToString() + ".jpg";
-                string img2Locn = ((DataRowView)itemBindingSource1.Current).Row["Image2"].ToString() + ".jpg";
+                string img1Locn = ((DataRowView)itemBindingSource1.Current).Row["Image1"].ToString();
+                string img2Locn = ((DataRowView)itemBindingSource1.Current).Row["Image2"].ToString();
 
                 pictureBox1.ImageLocation = qualifyFileName(img1Locn);
                 pictureBox2.ImageLocation = qualifyFileName(img2Locn);
+
+                SetPictureBoxToolTip(pictureBox1);
+                SetPictureBoxToolTip(pictureBox2);
 
                 if (((DataRowView)itemBindingSource1.Current).Row["Remarks"].ToString() != "")
                     pctrbxRemarks.Visible = false;
@@ -318,16 +342,27 @@ namespace Flowcort
             }
         }
 
-        private string qualifyFileName(string fname)
+        private void SetPictureBoxToolTip(PictureBox pb)
         {
-            if (fname != ".jpg")
+            if (pb.ImageLocation == "")
             {
-                return "ImagesTN\\" + fname;
+                if (pb.Image == Flowcort208x117BW)
+                    toolTip1.SetToolTip(pb, "Click to visit the site");
+                else
+                    toolTip1.SetToolTip(pb, "Click to visit the channel");
             }
             else
-            {
+                toolTip1.SetToolTip(pb, "Click for full-size image");
+        }
+
+        private string qualifyFileName(string fname)
+        {
+            fname = _ThumbnailFolder + "\\" + fname;
+
+            if (File.Exists(fname))
+                return fname;
+            else
                 return "";
-            }
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
@@ -338,7 +373,7 @@ namespace Flowcort
             }
             else
             {
-                showImage("Image1", ".png");
+                showImage("Image1");
             }
         }
 
@@ -350,13 +385,13 @@ namespace Flowcort
             }
             else
             {
-               showImage("Image2", ".png");
+               showImage("Image2");
             }
         }
 
-        private void showImage(string columnName, string imgType)
+        private void showImage(string columnName)
         {
-            string fname = "Images\\" + ((DataRowView)itemBindingSource1.Current).Row[columnName].ToString() + imgType;
+            string fname = _ImageFolder + "\\" + ((DataRowView)itemBindingSource1.Current).Row[columnName].ToString();
 
             if (File.Exists(fname))
             {
@@ -380,8 +415,11 @@ namespace Flowcort
                 pb.Image = img;
 
                 form.Controls.Add(pb);
+                form.TopMost = true;
                 form.ShowDialog();
             }
+
+            TopMost = true;
         }
 
         void pb_Click(object sender, EventArgs e)
@@ -602,8 +640,7 @@ namespace Flowcort
             {
                 sectionBindingSource1.Position = section;
                 itemDataGridView1.Focus();
-
-                setSelectedSectionButton(sender);
+                // setSelectedSectionButton(sender);
             }
 
         }
@@ -615,8 +652,8 @@ namespace Flowcort
                 resetSectionButtons();
                 Button btn = sender as Button;
                 {
-                    btn.BackColor = System.Drawing.SystemColors.Highlight;
-                    btn.ForeColor = System.Drawing.SystemColors.HighlightText;
+                    btn.BackColor = SystemColors.Highlight;
+                    btn.ForeColor = SystemColors.HighlightText;
                 }
             }
         }
@@ -648,8 +685,8 @@ namespace Flowcort
 
         private void resetButton(Button sender)
         {
-            sender.BackColor = System.Drawing.SystemColors.Control;
-            sender.ForeColor = System.Drawing.SystemColors.ControlText;
+            sender.BackColor = SystemColors.Control;
+            sender.ForeColor = SystemColors.ControlText;
         }
 
         private void btnLandscapeOrPortrait(object sender, EventArgs e)
@@ -697,7 +734,7 @@ namespace Flowcort
 
         private void itemDataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            ColorizeRow(itemDataGridView1.CurrentRow);
+            // ColorizeRow(itemDataGridView1.CurrentRow);
         }
 
         private void ColorizeRow(DataGridViewRow row)
@@ -751,6 +788,9 @@ namespace Flowcort
 
                 Button sectionButton = findSectionButtonByText(newSection);
                 setSelectedSectionButton(sectionButton);
+
+                if (RowIsEventOrSubsection(itemDataGridView1.CurrentRow))
+                    nextActionItem(true);
             }
         }
 
