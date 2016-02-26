@@ -29,35 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlGrid = new System.Windows.Forms.Panel();
             this.flwButtonPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonBar1 = new ButtonBar.ButtonBar();
-            this.itemDataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SectionID1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValToSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Event = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Subsection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Done = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.sectionBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.FlowcortDataSet = new Flowcort.FlowcortDataSet();
-            this.pnlDetail = new System.Windows.Forms.Panel();
-            this.txtbxRemarks = new System.Windows.Forms.TextBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.imglstTransparency = new System.Windows.Forms.ImageList(this.components);
-            this.sectionTableAdapter1 = new Flowcort.FlowcortDataSetTableAdapters.SectionTableAdapter();
-            this.tableAdapterManager1 = new Flowcort.FlowcortDataSetTableAdapters.TableAdapterManager();
-            this.itemTableAdapter1 = new Flowcort.FlowcortDataSetTableAdapters.ItemTableAdapter();
-            this.pctrbxRemarks = new System.Windows.Forms.PictureBox();
-            this.itemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnConnectToggle = new System.Windows.Forms.Button();
             this.btnPortraitOrLandscape = new System.Windows.Forms.Button();
             this.btnResetList = new System.Windows.Forms.Button();
@@ -65,10 +43,32 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pctrbxTransparency = new System.Windows.Forms.PictureBox();
             this.btnPin = new System.Windows.Forms.Button();
+            this.buttonBar1 = new ButtonBar.ButtonBar();
+            this.itemDataGridView1 = new System.Windows.Forms.DataGridView();
+            this.itemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.sectionBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.FlowcortDataSet = new Flowcort.FlowcortDataSet();
+            this.pnlDetail = new System.Windows.Forms.Panel();
+            this.pctrbxRemarks = new System.Windows.Forms.PictureBox();
+            this.txtbxRemarks = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.imglstTransparency = new System.Windows.Forms.ImageList(this.components);
+            this.sectionTableAdapter1 = new Flowcort.FlowcortDataSetTableAdapters.SectionTableAdapter();
+            this.tableAdapterManager1 = new Flowcort.FlowcortDataSetTableAdapters.TableAdapterManager();
+            this.itemTableAdapter1 = new Flowcort.FlowcortDataSetTableAdapters.ItemTableAdapter();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SectionID1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValToSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Event = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Subsection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Done = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,16 +81,16 @@
             this.contextMenuStrip1.SuspendLayout();
             this.pnlGrid.SuspendLayout();
             this.flwButtonPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctrbxTransparency)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sectionBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FlowcortDataSet)).BeginInit();
             this.pnlDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxRemarks)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctrbxTransparency)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -133,243 +133,6 @@
             this.flwButtonPanel.Size = new System.Drawing.Size(44, 281);
             this.flwButtonPanel.TabIndex = 29;
             this.flwButtonPanel.Visible = false;
-            // 
-            // buttonBar1
-            // 
-            this.buttonBar1.Location = new System.Drawing.Point(0, 0);
-            this.buttonBar1.Name = "buttonBar1";
-            this.buttonBar1.Size = new System.Drawing.Size(600, 38);
-            this.buttonBar1.TabIndex = 11;
-            this.toolTip1.SetToolTip(this.buttonBar1, "Select phase of flight");
-            this.buttonBar1.ButtonPush += new System.EventHandler(this.btnSection);
-            // 
-            // itemDataGridView1
-            // 
-            this.itemDataGridView1.AllowUserToAddRows = false;
-            this.itemDataGridView1.AllowUserToDeleteRows = false;
-            this.itemDataGridView1.AllowUserToResizeRows = false;
-            this.itemDataGridView1.AutoGenerateColumns = false;
-            this.itemDataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.itemDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.itemDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.itemDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ItemID,
-            this.SectionID1,
-            this.Position,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.ValToSet,
-            this.dataGridViewTextBoxColumn15,
-            this.Event,
-            this.Subsection,
-            this.Done,
-            this.dataGridViewCheckBoxColumn3,
-            this.dataGridViewCheckBoxColumn4,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn19,
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn21});
-            this.itemDataGridView1.DataSource = this.itemBindingSource1;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemDataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
-            this.itemDataGridView1.EnableHeadersVisualStyles = false;
-            this.itemDataGridView1.Location = new System.Drawing.Point(2, 44);
-            this.itemDataGridView1.MultiSelect = false;
-            this.itemDataGridView1.Name = "itemDataGridView1";
-            this.itemDataGridView1.ReadOnly = true;
-            this.itemDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.itemDataGridView1.RowHeadersVisible = false;
-            this.itemDataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.itemDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.itemDataGridView1.Size = new System.Drawing.Size(596, 234);
-            this.itemDataGridView1.TabIndex = 0;
-            this.itemDataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemDataGridView1_DataBindingComplete);
-            this.itemDataGridView1.SelectionChanged += new System.EventHandler(this.itemDataGridView1_SelectionChanged);
-            this.itemDataGridView1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.itemDataGridView1_MouseMove);
-            // 
-            // ItemID
-            // 
-            this.ItemID.DataPropertyName = "ItemID";
-            this.ItemID.HeaderText = "ItemID";
-            this.ItemID.Name = "ItemID";
-            this.ItemID.ReadOnly = true;
-            this.ItemID.Visible = false;
-            // 
-            // SectionID1
-            // 
-            this.SectionID1.DataPropertyName = "SectionID1";
-            this.SectionID1.HeaderText = "SectionID";
-            this.SectionID1.Name = "SectionID1";
-            this.SectionID1.ReadOnly = true;
-            this.SectionID1.Visible = false;
-            // 
-            // Position
-            // 
-            this.Position.DataPropertyName = "Position";
-            this.Position.HeaderText = "Position";
-            this.Position.Name = "Position";
-            this.Position.ReadOnly = true;
-            this.Position.Visible = false;
-            // 
-            // ValToSet
-            // 
-            this.ValToSet.DataPropertyName = "ValToSet";
-            this.ValToSet.HeaderText = "Value";
-            this.ValToSet.Name = "ValToSet";
-            this.ValToSet.ReadOnly = true;
-            // 
-            // Event
-            // 
-            this.Event.DataPropertyName = "Event";
-            this.Event.HeaderText = "Event";
-            this.Event.Name = "Event";
-            this.Event.ReadOnly = true;
-            this.Event.Visible = false;
-            // 
-            // Subsection
-            // 
-            this.Subsection.DataPropertyName = "Subsection";
-            this.Subsection.HeaderText = "Subsection";
-            this.Subsection.Name = "Subsection";
-            this.Subsection.ReadOnly = true;
-            this.Subsection.Visible = false;
-            // 
-            // Done
-            // 
-            this.Done.DataPropertyName = "Done";
-            this.Done.HeaderText = "Done";
-            this.Done.Name = "Done";
-            this.Done.ReadOnly = true;
-            this.Done.Visible = false;
-            // 
-            // sectionBindingSource1
-            // 
-            this.sectionBindingSource1.DataMember = "Section";
-            this.sectionBindingSource1.DataSource = this.FlowcortDataSet;
-            this.sectionBindingSource1.PositionChanged += new System.EventHandler(this.sectionBindingSource1_PositionChanged);
-            // 
-            // FlowcortDataSet
-            // 
-            this.FlowcortDataSet.DataSetName = "FlowcortDataSet";
-            this.FlowcortDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // pnlDetail
-            // 
-            this.pnlDetail.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlDetail.Controls.Add(this.pctrbxRemarks);
-            this.pnlDetail.Controls.Add(this.txtbxRemarks);
-            this.pnlDetail.Controls.Add(this.pictureBox2);
-            this.pnlDetail.Controls.Add(this.pictureBox1);
-            this.pnlDetail.Location = new System.Drawing.Point(600, 3);
-            this.pnlDetail.Name = "pnlDetail";
-            this.pnlDetail.Size = new System.Drawing.Size(391, 278);
-            this.pnlDetail.TabIndex = 18;
-            // 
-            // txtbxRemarks
-            // 
-            this.txtbxRemarks.BackColor = System.Drawing.SystemColors.Control;
-            this.txtbxRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtbxRemarks.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.itemBindingSource1, "Remarks", true));
-            this.txtbxRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtbxRemarks.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtbxRemarks.Location = new System.Drawing.Point(2, 0);
-            this.txtbxRemarks.Multiline = true;
-            this.txtbxRemarks.Name = "txtbxRemarks";
-            this.txtbxRemarks.ReadOnly = true;
-            this.txtbxRemarks.Size = new System.Drawing.Size(179, 275);
-            this.txtbxRemarks.TabIndex = 22;
-            // 
-            // imglstTransparency
-            // 
-            this.imglstTransparency.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglstTransparency.ImageStream")));
-            this.imglstTransparency.TransparentColor = System.Drawing.Color.Transparent;
-            this.imglstTransparency.Images.SetKeyName(0, "rotate0.png");
-            this.imglstTransparency.Images.SetKeyName(1, "rotate1.png");
-            this.imglstTransparency.Images.SetKeyName(2, "rotate2.png");
-            this.imglstTransparency.Images.SetKeyName(3, "rotate3.png");
-            this.imglstTransparency.Images.SetKeyName(4, "rotate4.png");
-            this.imglstTransparency.Images.SetKeyName(5, "rotate5.png");
-            this.imglstTransparency.Images.SetKeyName(6, "rotate6.png");
-            this.imglstTransparency.Images.SetKeyName(7, "rotate7.png");
-            // 
-            // sectionTableAdapter1
-            // 
-            this.sectionTableAdapter1.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.ItemTableAdapter = this.itemTableAdapter1;
-            this.tableAdapterManager1.ListTableAdapter = null;
-            this.tableAdapterManager1.SectionTableAdapter = this.sectionTableAdapter1;
-            this.tableAdapterManager1.UpdateOrder = Flowcort.FlowcortDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // itemTableAdapter1
-            // 
-            this.itemTableAdapter1.ClearBeforeFill = true;
-            // 
-            // pctrbxRemarks
-            // 
-            this.pctrbxRemarks.Image = ((System.Drawing.Image)(resources.GetObject("pctrbxRemarks.Image")));
-            this.pctrbxRemarks.Location = new System.Drawing.Point(1, 1);
-            this.pctrbxRemarks.Name = "pctrbxRemarks";
-            this.pctrbxRemarks.Size = new System.Drawing.Size(45, 14);
-            this.pctrbxRemarks.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pctrbxRemarks.TabIndex = 23;
-            this.pctrbxRemarks.TabStop = false;
-            // 
-            // itemBindingSource1
-            // 
-            this.itemBindingSource1.DataMember = "FK_Item_0_0";
-            this.itemBindingSource1.DataSource = this.sectionBindingSource1;
-            this.itemBindingSource1.PositionChanged += new System.EventHandler(this.itemBindingSource_PositionChanged);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Flowcort.Properties.Resources.FlowcortYouTubeBW;
-            this.pictureBox2.Location = new System.Drawing.Point(181, 161);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(208, 117);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 17;
-            this.pictureBox2.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox2, "Click for larger version");
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            this.pictureBox2.MouseEnter += new System.EventHandler(this.pictureBox2_MouseEnter);
-            this.pictureBox2.MouseLeave += new System.EventHandler(this.pictureBox2_MouseLeave);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Flowcort.Properties.Resources.Flowcort208x117BW;
-            this.pictureBox1.Location = new System.Drawing.Point(181, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(208, 117);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, "Click for larger version");
-            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
-            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
-            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             // 
             // btnConnectToggle
             // 
@@ -457,6 +220,212 @@
             this.btnPin.UseVisualStyleBackColor = true;
             this.btnPin.Click += new System.EventHandler(this.btnPin_Click);
             // 
+            // buttonBar1
+            // 
+            this.buttonBar1.Location = new System.Drawing.Point(0, 0);
+            this.buttonBar1.Name = "buttonBar1";
+            this.buttonBar1.Size = new System.Drawing.Size(600, 38);
+            this.buttonBar1.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.buttonBar1, "Select phase of flight");
+            this.buttonBar1.ButtonPush += new System.EventHandler(this.btnSection);
+            // 
+            // itemDataGridView1
+            // 
+            this.itemDataGridView1.AllowUserToAddRows = false;
+            this.itemDataGridView1.AllowUserToDeleteRows = false;
+            this.itemDataGridView1.AllowUserToResizeRows = false;
+            this.itemDataGridView1.AutoGenerateColumns = false;
+            this.itemDataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.itemDataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.itemDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.itemDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ItemID,
+            this.SectionID1,
+            this.Position,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.ValToSet,
+            this.dataGridViewTextBoxColumn15,
+            this.Event,
+            this.Subsection,
+            this.Done,
+            this.dataGridViewCheckBoxColumn3,
+            this.dataGridViewCheckBoxColumn4,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19,
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn21});
+            this.itemDataGridView1.DataSource = this.itemBindingSource1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemDataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.itemDataGridView1.EnableHeadersVisualStyles = false;
+            this.itemDataGridView1.Location = new System.Drawing.Point(2, 44);
+            this.itemDataGridView1.MultiSelect = false;
+            this.itemDataGridView1.Name = "itemDataGridView1";
+            this.itemDataGridView1.ReadOnly = true;
+            this.itemDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.itemDataGridView1.RowHeadersVisible = false;
+            this.itemDataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.itemDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.itemDataGridView1.Size = new System.Drawing.Size(596, 234);
+            this.itemDataGridView1.TabIndex = 0;
+            this.itemDataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemDataGridView1_DataBindingComplete);
+            this.itemDataGridView1.SelectionChanged += new System.EventHandler(this.itemDataGridView1_SelectionChanged);
+            this.itemDataGridView1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.itemDataGridView1_MouseMove);
+            // 
+            // itemBindingSource1
+            // 
+            this.itemBindingSource1.DataMember = "FK_Item_0_0";
+            this.itemBindingSource1.DataSource = this.sectionBindingSource1;
+            this.itemBindingSource1.PositionChanged += new System.EventHandler(this.itemBindingSource_PositionChanged);
+            // 
+            // sectionBindingSource1
+            // 
+            this.sectionBindingSource1.DataMember = "Section";
+            this.sectionBindingSource1.DataSource = this.FlowcortDataSet;
+            this.sectionBindingSource1.PositionChanged += new System.EventHandler(this.sectionBindingSource1_PositionChanged);
+            // 
+            // FlowcortDataSet
+            // 
+            this.FlowcortDataSet.DataSetName = "FlowcortDataSet";
+            this.FlowcortDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // pnlDetail
+            // 
+            this.pnlDetail.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlDetail.Controls.Add(this.pctrbxRemarks);
+            this.pnlDetail.Controls.Add(this.txtbxRemarks);
+            this.pnlDetail.Controls.Add(this.pictureBox2);
+            this.pnlDetail.Controls.Add(this.pictureBox1);
+            this.pnlDetail.Location = new System.Drawing.Point(600, 3);
+            this.pnlDetail.Name = "pnlDetail";
+            this.pnlDetail.Size = new System.Drawing.Size(391, 278);
+            this.pnlDetail.TabIndex = 18;
+            // 
+            // pctrbxRemarks
+            // 
+            this.pctrbxRemarks.Image = ((System.Drawing.Image)(resources.GetObject("pctrbxRemarks.Image")));
+            this.pctrbxRemarks.Location = new System.Drawing.Point(1, 1);
+            this.pctrbxRemarks.Name = "pctrbxRemarks";
+            this.pctrbxRemarks.Size = new System.Drawing.Size(45, 14);
+            this.pctrbxRemarks.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pctrbxRemarks.TabIndex = 23;
+            this.pctrbxRemarks.TabStop = false;
+            // 
+            // txtbxRemarks
+            // 
+            this.txtbxRemarks.BackColor = System.Drawing.SystemColors.Control;
+            this.txtbxRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbxRemarks.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.itemBindingSource1, "Remarks", true));
+            this.txtbxRemarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtbxRemarks.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtbxRemarks.Location = new System.Drawing.Point(2, 0);
+            this.txtbxRemarks.Multiline = true;
+            this.txtbxRemarks.Name = "txtbxRemarks";
+            this.txtbxRemarks.ReadOnly = true;
+            this.txtbxRemarks.Size = new System.Drawing.Size(179, 275);
+            this.txtbxRemarks.TabIndex = 22;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Flowcort.Properties.Resources.FlowcortYouTubeBW;
+            this.pictureBox2.Location = new System.Drawing.Point(181, 161);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(208, 117);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "Click for larger version");
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pictureBox2.MouseEnter += new System.EventHandler(this.pictureBox2_MouseEnter);
+            this.pictureBox2.MouseLeave += new System.EventHandler(this.pictureBox2_MouseLeave);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Flowcort.Properties.Resources.Flowcort208x117BW;
+            this.pictureBox1.Location = new System.Drawing.Point(181, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(208, 117);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Click for larger version");
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
+            // 
+            // imglstTransparency
+            // 
+            this.imglstTransparency.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglstTransparency.ImageStream")));
+            this.imglstTransparency.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglstTransparency.Images.SetKeyName(0, "rotate0.png");
+            this.imglstTransparency.Images.SetKeyName(1, "rotate1.png");
+            this.imglstTransparency.Images.SetKeyName(2, "rotate2.png");
+            this.imglstTransparency.Images.SetKeyName(3, "rotate3.png");
+            this.imglstTransparency.Images.SetKeyName(4, "rotate4.png");
+            this.imglstTransparency.Images.SetKeyName(5, "rotate5.png");
+            this.imglstTransparency.Images.SetKeyName(6, "rotate6.png");
+            this.imglstTransparency.Images.SetKeyName(7, "rotate7.png");
+            // 
+            // sectionTableAdapter1
+            // 
+            this.sectionTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.ItemTableAdapter = this.itemTableAdapter1;
+            this.tableAdapterManager1.ListTableAdapter = null;
+            this.tableAdapterManager1.SectionTableAdapter = this.sectionTableAdapter1;
+            this.tableAdapterManager1.UpdateOrder = Flowcort.FlowcortDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // itemTableAdapter1
+            // 
+            this.itemTableAdapter1.ClearBeforeFill = true;
+            // 
+            // ItemID
+            // 
+            this.ItemID.DataPropertyName = "ItemID";
+            this.ItemID.HeaderText = "ItemID";
+            this.ItemID.Name = "ItemID";
+            this.ItemID.ReadOnly = true;
+            this.ItemID.Visible = false;
+            // 
+            // SectionID1
+            // 
+            this.SectionID1.DataPropertyName = "SectionID1";
+            this.SectionID1.HeaderText = "SectionID";
+            this.SectionID1.Name = "SectionID1";
+            this.SectionID1.ReadOnly = true;
+            this.SectionID1.Visible = false;
+            // 
+            // Position
+            // 
+            this.Position.DataPropertyName = "Position";
+            this.Position.HeaderText = "Position";
+            this.Position.Name = "Position";
+            this.Position.ReadOnly = true;
+            this.Position.Visible = false;
+            // 
             // dataGridViewTextBoxColumn12
             // 
             this.dataGridViewTextBoxColumn12.DataPropertyName = "Location";
@@ -484,6 +453,13 @@
             this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn14.Width = 120;
             // 
+            // ValToSet
+            // 
+            this.ValToSet.DataPropertyName = "ValToSet";
+            this.ValToSet.HeaderText = "Value";
+            this.ValToSet.Name = "ValToSet";
+            this.ValToSet.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn15
             // 
             this.dataGridViewTextBoxColumn15.DataPropertyName = "Action";
@@ -492,6 +468,30 @@
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
             this.dataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn15.Width = 60;
+            // 
+            // Event
+            // 
+            this.Event.DataPropertyName = "Event";
+            this.Event.HeaderText = "Event";
+            this.Event.Name = "Event";
+            this.Event.ReadOnly = true;
+            this.Event.Visible = false;
+            // 
+            // Subsection
+            // 
+            this.Subsection.DataPropertyName = "Subsection";
+            this.Subsection.HeaderText = "Subsection";
+            this.Subsection.Name = "Subsection";
+            this.Subsection.ReadOnly = true;
+            this.Subsection.Visible = false;
+            // 
+            // Done
+            // 
+            this.Done.DataPropertyName = "Done";
+            this.Done.HeaderText = "Done";
+            this.Done.Name = "Done";
+            this.Done.ReadOnly = true;
+            this.Done.Visible = false;
             // 
             // dataGridViewCheckBoxColumn3
             // 
@@ -587,17 +587,17 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.pnlGrid.ResumeLayout(false);
             this.flwButtonPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctrbxTransparency)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sectionBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FlowcortDataSet)).EndInit();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxRemarks)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctrbxTransparency)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -630,6 +630,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pctrbxRemarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.Button btnPin;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn SectionID1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Position;
@@ -650,6 +651,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private System.Windows.Forms.Button btnPin;
     }
 }
