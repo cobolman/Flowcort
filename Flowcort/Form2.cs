@@ -194,9 +194,9 @@ namespace Flowcort
         {
             switch (e.KeyValue)
             {
-                case 72:
-                    ShowHideFlowcort();
-                    break;
+                //case 72:
+                //    ShowHideFlowcort();
+                //    break;
                 case 74:
                     nextActionItem(false);
                     break;
@@ -316,7 +316,7 @@ namespace Flowcort
 
         private void ShowHideFlowcort()
         {
-            this.Visible = !this.Visible;
+            Visible = !Visible;
         }
 
         private void itemBindingSource_PositionChanged(object sender, EventArgs e)
@@ -434,8 +434,13 @@ namespace Flowcort
 
         private string GetCurrentLocation()
         {
+            string result = "1";
             DataGridViewRow dgvr = itemDataGridView1.CurrentRow;
-            return dgvr.Cells["ItemID"].Value.ToString();
+
+            if (dgvr != null)
+                result = dgvr.Cells["ItemID"].Value.ToString();
+
+            return result;
         }
 
         static void AddUpdateAppSetting(string key, string value)
@@ -543,6 +548,8 @@ namespace Flowcort
                 fsxConnection = new FSXConnect(this);
                 fsxConnection.openConnection();
                 fsxConnection.ConnectionOpenEventHandler += new EventHandler(fsxConnectionOpened);
+
+                // todo need a way to ensure that Flowcort is shown when FSX quits
 
                 fsxConnection.FSXActionEventHandler += new EventHandler<FSXConnect.FSXActionEventArgs>(fsxAction);
                 fsxConnection.AltitudeChangedEventHandler += new EventHandler<FSXConnect.AltitudeChangedEventArgs>(fsxAltitudeChanged);
@@ -853,7 +860,7 @@ namespace Flowcort
 
         private void itemDataGridView1_MouseMove(object sender, MouseEventArgs e)
         {
-            flwButtonPanel.Visible = e.X < 10;
+            flwButtonPanel.Visible = ( e.Y > 200 );
         }
 
         private void pictureBox2_MouseEnter(object sender, EventArgs e)
